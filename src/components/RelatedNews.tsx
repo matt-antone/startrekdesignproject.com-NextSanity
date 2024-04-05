@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { useRelatedNews } from '~/hooks/useRelatedNews';
+import { useRelatedNews } from '@/hooks/useRelatedNews';
 import Card from './Card';
 import type { Slug } from '@sanity/types';
-import { useLatestNews } from '~/hooks';
-import { News } from '~/lib/sanity.queries.news';
+import { useLatestNews } from '@/hooks';
+import { News } from '@/lib/sanity.queries.news';
 
 interface IRelatedPostsProps {
   slug: Slug;

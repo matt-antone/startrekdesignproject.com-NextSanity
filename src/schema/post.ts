@@ -2,8 +2,8 @@ import { defineField, defineType } from 'sanity'
 import * as fields from './fields'
 import { GrArticle } from "react-icons/gr";
 
-export default defineType({
-  name: 'posts',
+export const PostSchema = {
+  name: 'post',
   title: 'Posts',
   type: 'document',
   icon: GrArticle,
@@ -13,8 +13,12 @@ export default defineType({
     fields.slug,
     fields.excerpt,
     fields.body,
-    fields.categories,
-    fields.tags,
+    {
+      type: "reference",
+      name: "timePeriod",
+      label: "Time Period",
+      to: [{ type: "timePeriod" }],
+    },
   ],
   preview: {
     select: {
@@ -22,9 +26,11 @@ export default defineType({
       author: 'author.name',
       media: 'featuredImage',
     },
-    prepare(selection) {
+    prepare(selection:any) {
       const { author } = selection
       return { ...selection, subtitle: author && `by ${author}` }
     },
   },
-})
+}
+
+export default PostSchema

@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { useRelatedPortfolio } from '~/hooks/useRelatedPortfolio'
+import { useRelatedPortfolio } from '@/hooks/useRelatedPortfolio'
 import Card from './Card'
 import type { Slug } from '@sanity/types'
-import { useLatestPortfolio } from '~/hooks'
-import { Portfolio } from '~/lib/sanity.queries.portfolio'
+import { useLatestPortfolio } from '@/hooks'
+import { Portfolio } from '@/lib/sanity.queries.portfolio'
 
 interface IRelatedPostsProps {
   slug: Slug

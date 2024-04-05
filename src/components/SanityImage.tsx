@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {getImageDimensions} from '@sanity/asset-utils'
 import urlBuilder from '@sanity/image-url'
-import { getClient } from '~/lib/sanity.client'
+import { getClient } from '@/lib/sanity.client'
 
 interface ISanityImageProps {
   value: any;

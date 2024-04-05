@@ -1,14 +1,14 @@
 import * as React from 'react'
-import { CaseStudy } from '~/lib/sanity.queries.casestudy'
+import { CaseStudy } from '@/lib/sanity.queries.casestudy'
 import NextImage from 'next/image'
-import { urlForImage } from '~/lib/sanity.image'
-import PortableText from '~/components/PortableText'
+import { urlForImage } from '@/lib/sanity.image'
+import PortableText from '@/components/PortableText'
 import Link from 'next/link'
-import SanityImage from '~/components/SanityImage'
+import SanityImage from '@/components/SanityImage'
 import { Controller, Scene } from 'react-scrollmagic'
 import { Timeline, Tween } from 'react-gsap'
 import { useEffect, useState } from 'react'
-import { useImage } from '~/hooks'
+import { useImage } from '@/hooks'
 
 interface ICaseStudySummaryProps {
   caseStudy: CaseStudy

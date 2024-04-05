@@ -1,12 +1,12 @@
 import Head from 'next/head'
 import { BreadcrumbList } from 'schema-dts'
-import BreadcrumbItem from '~/components/BreadcrumbItem'
-import { useBreadcrumbs } from '~/hooks'
+import BreadcrumbItem from '@/components/BreadcrumbItem'
+import { useBreadcrumbs } from '@/hooks'
 import { jsonLdScriptProps } from 'react-schemaorg'
 import type { ListItem } from 'schema-dts'
 import { titleCase } from 'title-case'
 
-const Breadcrumb = ({ title }) => {
+const Breadcrumb = ({ title }:{title:string}) => {
   // const childrenArray = Children.toArray(children);
   const { breadcrumbs } = useBreadcrumbs()
 

@@ -1,8 +1,8 @@
 import * as React from 'react'
 import Card, { type CardProps } from './Card'
-import { CaseStudy } from '~/lib/sanity.queries.casestudy'
-import { News } from '~/lib/sanity.queries.news'
-import { Portfolio } from '~/lib/sanity.queries.portfolio'
+import { CaseStudy } from '@/lib/sanity.queries.casestudy'
+import { News } from '@/lib/sanity.queries.news'
+import { Portfolio } from '@/lib/sanity.queries.portfolio'
 
 interface IDeckProps {
   cards: CaseStudy[] | News[] | Portfolio[]

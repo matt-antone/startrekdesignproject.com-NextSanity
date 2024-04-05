@@ -1,11 +1,11 @@
 import * as React from 'react';
 import imageUrlBuilder from '@sanity/image-url'
-import { getClient } from '~/lib/sanity.client'
+import { getClient } from '@/lib/sanity.client'
 import Head from 'next/head'
-import { CaseStudy } from '~/lib/sanity.queries.casestudy';
-import { News } from '~/lib/sanity.queries.news';
-import { Page } from '~/lib/sanity.queries.pages';
-import { Portfolio } from '~/lib/sanity.queries.portfolio';
+import { CaseStudy } from '@/lib/sanity.queries.casestudy';
+import { News } from '@/lib/sanity.queries.news';
+import { Page } from '@/lib/sanity.queries.pages';
+import { Portfolio } from '@/lib/sanity.queries.portfolio';
 
 
 interface IMetaDataProps {

@@ -1,10 +1,10 @@
 import Image from 'next/image'
 
-import { urlForImage } from '~/lib/sanity.image'
-import { type Post, type News } from '~/lib/sanity.queries'
-import { type Portfolio } from '~/lib/sanity.queries.portfolio'
-import { type CaseStudy } from '~/lib/sanity.queries.casestudy'
-import { useImage } from '~/hooks'
+import { urlForImage } from '@/lib/sanity.image'
+import { type Post, type News } from '@/lib/sanity.queries'
+import { type Portfolio } from '@/lib/sanity.queries.portfolio'
+import { type CaseStudy } from '@/lib/sanity.queries.casestudy'
+import { useImage } from '@/hooks'
 
 export type CardProps = {
   post: Post | News | Portfolio | CaseStudy

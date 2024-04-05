@@ -1,9 +1,8 @@
 // structure.js
 import {
-  singletonDocumentListItem,
   singletonDocumentListItems,
   filteredDocumentListItems,
-} from 'sanity-plugin-singleton-tools';
+} from '@/schema/plugins/sanity-plugin-singleton-tools';
 import { PlugIcon } from '@sanity/icons';
 
 export const structure = (S:any, context:any) =>

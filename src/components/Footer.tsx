@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Container from './Container';
-import { useFooterNavigation } from '~/hooks';
+import { useFooterNavigation } from '@/hooks';
 
 interface IFooterProps {
 }

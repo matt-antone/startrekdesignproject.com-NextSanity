@@ -1,5 +1,5 @@
 export * from './blockContent'
-export * from './posts'
+export * from './post'
 export * from './category'
 export * from './page'
 export * from './fields/youtube'
@@ -13,7 +13,7 @@ export * from './fields/vimeo'
 import { SchemaTypeDefinition } from 'sanity'
 
 import blockContent from './blockContent'
-import posts from './posts'
+import { PostSchema } from './post'
 import category from './category'
 import pages from './page'
 import { youtube } from './fields/youtube'
@@ -24,6 +24,14 @@ import navLink from './navigation/link'
 import navItem from './navigation/navItem'
 import { vimeo } from './fields/vimeo'
 import home from './home'
+import timePeriod from './timePeriod'
+import quadrant from './quadrant'
+import universe from './universe'
+import affiliation from './affiliation'
+import types from './type'
+import franchise from './franchise'
+
+
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     /* singletons */
@@ -32,7 +40,15 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     /* post types */
     pages,
-    posts,
+    PostSchema,
+
+    /* Taxonomies */
+    timePeriod,
+    quadrant,
+    universe,
+    affiliation,
+    types,
+    franchise,
 
     /* object types */
     blockContent,

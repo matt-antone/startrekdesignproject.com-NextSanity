@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { useLatestNews } from '~/hooks';
+import { useLatestNews } from '@/hooks';
 import Card from './Card';
-import { News } from '~/lib/sanity.queries.news'
+import { News } from '@/lib/sanity.queries.news'
 
 const LatestPosts: React.FunctionComponent = () => {
   const {posts}:{

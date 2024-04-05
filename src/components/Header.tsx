@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Container from './Container'
 import NextImage from 'next/image'
-import { useHeaderNavigation, useLogo, useSiteName } from '~/hooks/'
+import { useHeaderNavigation, useLogo, useSiteName } from '@/hooks/'
 import Link from 'next/link'
 import { GrMenu } from "react-icons/gr";
 
