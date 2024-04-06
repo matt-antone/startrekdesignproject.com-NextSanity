@@ -1,3 +1,4 @@
+import { type Rule } from "sanity";
 export const linkImage = ({
   type: 'image',
   name: 'linkImage',
@@ -7,7 +8,7 @@ export const linkImage = ({
       alt: 'alt',
       media: 'asset',
     },
-    prepare(selection) {
+    prepare(selection:any) {
       const { alt, caption, media } = selection
       return {
         title: alt,
@@ -21,7 +22,7 @@ export const linkImage = ({
       title: "Alt Text",
       name: "alt",
       type: "string",
-      validation: Rule => Rule.custom((alt, context) => {
+      validation: (Rule:Rule) => Rule.custom((alt, context:any) => {
         if (context.parent?.asset && !alt) {
           return "Alt text is required when an image is present"
         }
