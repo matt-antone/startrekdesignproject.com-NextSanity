@@ -26,7 +26,6 @@ export const PostSchema = {
           name: "caption",
           title: "Caption",
           type: "string",
-          validation: (Rule:any) => Rule.required(),
         },
       ],
     },
