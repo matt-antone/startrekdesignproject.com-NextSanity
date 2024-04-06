@@ -19,6 +19,14 @@ export default defineType({
     // Image with alt text
     {
       type: 'image',
+      fields: [
+        {
+          title: 'Alt Text',
+          name: 'alt',
+          type: 'string',
+          validation: Rule => Rule.required(),
+        },
+      ],
     },
     // Block with inline styles
     {

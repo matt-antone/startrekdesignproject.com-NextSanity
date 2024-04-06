@@ -8,10 +8,15 @@
     "start": "next start",
     "lint": "next lint",
     "export": "node export/exportSymbols.mjs",
-    "import:symbols": "sanity dataset import ./symbols.ndjson --replace --allow-failing-assets"
+    "import:symbols": "sanity dataset import ./symbols.ndjson --replace --allow-failing-assets",
+    "import:types": "sanity dataset import ./type.ndjson --replace --allow-failing-assets",
+    "import:affiliations": "sanity dataset import ./affiliation.ndjson --replace --allow-failing-assets",
+    "import:symbol": "sanity dataset import ./symbol.ndjson --replace --allow-failing-assets",
+    "delete:symbols": "sanity documents query \"*[_type == 'post']._id\" | groq \"*\" -o ndjson | xargs sanity documents delete"
   },
   "dependencies": {
     "@sanity/client": "^6.12.4",
+    "@sanity/export": "^3.36.4",
     "@sanity/icons": "^2.8",
     "@sanity/image-url": "1",
     "@sanity/types": "^3.25",

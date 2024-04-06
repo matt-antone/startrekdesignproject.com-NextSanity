@@ -22,6 +22,6 @@
     },
     "target": "ES2017"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "export/importOldSymbols.mjs"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "export/importOldSymbols.mjs", "src/schema/post.ts"],
   "exclude": ["node_modules"]
 }

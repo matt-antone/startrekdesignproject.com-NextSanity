@@ -1,0 +1,12 @@
+export const timePeriods = [
+{"_createdAt":"2024-04-05T06:01:06Z","_id":"760c7db1-8bcc-4d35-98c0-95de46fa4a04","_rev":"Woll41FpW1TOpEMsQkOfpm","_type":"timePeriod","_updatedAt":"2024-04-05T06:01:06Z","slug":{"_type":"slug","current":"1400s"},"title":"1400s"},
+{"_createdAt":"2024-04-05T06:04:35Z","_id":"b1be1661-9c28-426e-bf5d-12ffbb973859","_rev":"Woll41FpW1TOpEMsQkP2Hs","_type":"timePeriod","_updatedAt":"2024-04-05T06:04:35Z","slug":{"_type":"slug","current":"2300s"},"title":"2300s"},
+{"_createdAt":"2024-04-05T06:03:30Z","_id":"1b590cf2-3bdd-4151-858e-5f9a9aa3d03a","_rev":"Woll41FpW1TOpEMsQkOs16","_type":"timePeriod","_updatedAt":"2024-04-05T06:03:30Z","slug":{"_type":"slug","current":"1900s"},"title":"1900s"},
+{"_createdAt":"2024-04-05T06:04:47Z","_id":"1700b97c-0a9e-4a86-8b7b-dd2c2564bf2a","_rev":"Woll41FpW1TOpEMsQkP45e","_type":"timePeriod","_updatedAt":"2024-04-05T06:04:47Z","slug":{"_type":"slug","current":"2400s"},"title":"2400s"},
+{"_createdAt":"2024-04-05T06:03:51Z","_id":"03340dc6-5732-4762-89e2-84682aa6577a","_rev":"Woll41FpW1TOpEMsQkOt04","_type":"timePeriod","_updatedAt":"2024-04-05T06:03:51Z","slug":{"_type":"slug","current":"2000s"},"title":"2000s"},
+{"_createdAt":"2024-04-05T06:04:06Z","_id":"5b908f30-f66c-4ee5-92b2-ba765874e6c8","_rev":"Ar19jrAZ1MlIiaihKvw7me","_type":"timePeriod","_updatedAt":"2024-04-05T06:04:06Z","slug":{"_type":"slug","current":"2100s"},"title":"2100s"},
+{"_createdAt":"2024-04-05T06:05:01Z","_id":"8c64348f-22a6-4127-9041-5097e3fc0507","_rev":"Woll41FpW1TOpEMsQkP4dW","_type":"timePeriod","_updatedAt":"2024-04-05T06:05:01Z","slug":{"_type":"slug","current":"2800s"},"title":"2800s"},
+{"_createdAt":"2024-04-05T06:04:21Z","_id":"51eae084-7212-40d6-83c4-4a593cdc5153","_rev":"Ar19jrAZ1MlIiaihKvwABw","_type":"timePeriod","_updatedAt":"2024-04-05T06:04:21Z","slug":{"_type":"slug","current":"2200s"},"title":"2200s"},
+{"_createdAt":"2024-04-05T06:05:58Z","_id":"35073c39-b137-4841-b45f-6e44441b0507","_rev":"Ar19jrAZ1MlIiaihKvwG8y","_type":"timePeriod","_updatedAt":"2024-04-05T06:05:58Z","slug":{"_type":"slug","current":"0800s"},"title":"0800s"},
+{"_createdAt":"2024-04-05T06:05:23Z","_id":"af909368-7dbc-4378-8e85-5bab5a3da3c7","_rev":"Ar19jrAZ1MlIiaihKvwF0W","_type":"timePeriod","_updatedAt":"2024-04-05T06:05:23Z","slug":{"_type":"slug","current":"3100s"},"title":"3100s"},
+]

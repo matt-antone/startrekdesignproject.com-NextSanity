@@ -1,0 +1,111 @@
+{
+  "_type": "post",
+  "date": "2022-07-05T07:00:00.000Z",
+  "_createdAt": "2022-07-05T07:00:00.000Z",
+  "_publishedAt": "2022-07-05T07:00:00.000Z",
+  "title": "21st Street Mission 1930s",
+  "body": [
+    {
+      "_key": "38484990e87a",
+      "children": [
+        {
+          "_type": "span",
+          "marks": [],
+          "text": "Canon Image",
+          "_key": "38484990e87a0"
+        }
+      ],
+      "markDefs": [],
+      "_type": "block",
+      "style": "h2"
+    },
+    {
+      "_key": "60af1db87695",
+      "children": [
+        { "_type": "span", "_key": "60af1db876950", "text": "", "marks": [] }
+      ],
+      "markDefs": [],
+      "_type": "block",
+      "style": "normal"
+    },
+    {
+      "_type": "image",
+      "_sanityAsset": "image@https://res.cloudinary.com/startrekdesignproject-com/image/upload/v1656970997/21st-Street-Mission_TOS-1x28-1.jpg",
+      "alt": null,
+      "caption": null,
+      "_key": "1a01a8d01954"
+    }
+  ],
+  "slug": { "_type": "slug", "current": "21st-street-mission-1930s" },
+  "featuredImage": {
+    "_type": "image",
+    "_sanityAsset": "image@https://res.cloudinary.com/startrekdesignproject-com/image/upload/v1656970997/21st-Street-Mission-1930s.png",
+    "alt": "21st Street Mission 1930s",
+    "caption": "21st Street Mission 1930s"
+  },
+  "timePeriod": {
+    "_ref": "1b590cf2-3bdd-4151-858e-5f9a9aa3d03a",
+    "_type": "reference"
+  },
+  "quadrant": {
+    "_ref": "7111d380-7983-4539-a52b-5b71b974078f",
+    "_type": "reference"
+  },
+  "universes": [
+    { "_ref": "f059f8a8-5fe5-4776-bef4-382ee358ca49", "_type": "universe" }
+  ],
+  "affiliations": [
+    { "_ref": "86872e34-b5cb-46a5-acc6-4c043657e315", "_type": "affiliation" }
+  ],
+  "franchise": {
+    "_ref": "60959efa-c1fc-480c-ade0-eb137674aa74",
+    "_type": "reference"
+  },
+  "types": [
+    { "_ref": "67d6d3ae-1865-46fd-a57e-3c3ca7b8eb52", "_type": "types" }
+  ],
+  "reference": [
+    {
+      "_key": "11bfde555a3a",
+      "children": [
+        {
+          "_type": "span",
+          "marks": [],
+          "text": "S01E28 ",
+          "_key": "11bfde555a3a0"
+        },
+        {
+          "_type": "span",
+          "marks": ["aeb592e01677"],
+          "text": "The City on the Edge of Forever",
+          "_key": "11bfde555a3a1"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "aeb592e01677",
+          "_type": "link",
+          "href": "https://memory-alpha.fandom.com/wiki/The_City_on_the_Edge_of_Forever_(episode)"
+        }
+      ],
+      "_type": "block",
+      "style": "normal"
+    }
+  ],
+  "memoryAlpha": [
+    {
+      "_key": "71b1b17efc39",
+      "children": [
+        {
+          "_type": "span",
+          "marks": [],
+          "text": "https://memory-alpha.fandom.com/wiki/21st_Street_Mission_(New_York_City)",
+          "_key": "71b1b17efc390"
+        }
+      ],
+      "markDefs": [],
+      "_type": "block",
+      "style": "normal"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+export const franchises = [
+{"_createdAt":"2024-04-05T06:24:28Z","_id":"a4b74ec9-eebd-4049-a32a-276922c8b45f","_rev":"Woll41FpW1TOpEMsQkRGmA","_type":"franchise","_updatedAt":"2024-04-05T06:24:28Z","slug":{"_type":"slug","current":"deep-space-9"},"title":"Deep Space 9"},
+{"_createdAt":"2024-04-05T06:24:45Z","_id":"a9ea1fef-f55c-4433-98a9-a2c4c6a6ddc8","_rev":"Woll41FpW1TOpEMsQkRH6U","_type":"franchise","_updatedAt":"2024-04-05T06:24:45Z","slug":{"_type":"slug","current":"discovery"},"title":"Discovery"},
+{"_createdAt":"2024-04-05T06:28:04Z","_id":"8758f8bf-8c40-4319-af10-a64acb58b3dc","_rev":"Woll41FpW1TOpEMsQkRk3e","_type":"franchise","_updatedAt":"2024-04-05T06:28:04Z","slug":{"_type":"slug","current":"short-treks"},"title":"Short Treks"},
+{"_createdAt":"2024-04-05T06:25:21Z","_id":"fd5bf567-8c9a-49d1-ab78-21ef72fac38a","_rev":"Woll41FpW1TOpEMsQkRO9Q","_type":"franchise","_updatedAt":"2024-04-05T06:25:21Z","slug":{"_type":"slug","current":"enterprise"},"title":"Enterprise"},
+{"_createdAt":"2024-04-05T06:29:01Z","_id":"d86a0b08-9c4d-4790-b01d-593a9f18ebbc","_rev":"Woll41FpW1TOpEMsQkRpC2","_type":"franchise","_updatedAt":"2024-04-05T06:29:01Z","slug":{"_type":"slug","current":"tas"},"title":"TAS"},
+{"_createdAt":"2024-04-05T06:28:29Z","_id":"d1709129-412e-428c-9ae6-4c638c32d879","_rev":"Woll41FpW1TOpEMsQkRmn0","_type":"franchise","_updatedAt":"2024-04-05T06:28:29Z","slug":{"_type":"slug","current":"strange-new-worlds"},"title":"Strange New Worlds"},
+{"_createdAt":"2024-04-05T06:26:18Z","_id":"842d04a2-ec80-43b6-b9ae-14857df26716","_rev":"Ar19jrAZ1MlIiaihKvxjpk","_type":"franchise","_updatedAt":"2024-04-05T06:26:18Z","slug":{"_type":"slug","current":"lower-decks"},"title":"Lower Decks"},
+{"_createdAt":"2024-04-05T06:26:42Z","_id":"e6c6ecb1-94f7-4b43-9042-6720aebbf82e","_rev":"Ar19jrAZ1MlIiaihKvxkVg","_type":"franchise","_updatedAt":"2024-04-05T06:26:42Z","slug":{"_type":"slug","current":"movies"},"title":"Movies"},
+{"_createdAt":"2024-04-05T06:27:06Z","_id":"f3522ab8-ebd0-4b9d-8084-2ac6ca1c412d","_rev":"Woll41FpW1TOpEMsQkRbhQ","_type":"franchise","_updatedAt":"2024-04-05T06:27:06Z","slug":{"_type":"slug","current":"picard"},"title":"Picard"},
+{"_createdAt":"2024-04-05T06:27:29Z","_id":"6c3ef31d-c50e-4b09-bba1-b5d73c4a0950","_rev":"Woll41FpW1TOpEMsQkRevG","_type":"franchise","_updatedAt":"2024-04-05T06:27:29Z","slug":{"_type":"slug","current":"prodigy"},"title":"Prodigy"},
+{"_createdAt":"2024-04-05T06:47:42Z","_id":"622af362-08f4-4324-9aa5-f6a088dc268d","_rev":"Woll41FpW1TOpEMsQkTrlw","_type":"franchise","_updatedAt":"2024-04-05T06:47:42Z","slug":{"_type":"slug","current":"the-next-generation"},"title":"The Next Generation"},
+{"_createdAt":"2024-04-05T06:47:22Z","_id":"60959efa-c1fc-480c-ade0-eb137674aa74","_rev":"Woll41FpW1TOpEMsQkTpyA","_type":"franchise","_updatedAt":"2024-04-05T06:47:22Z","slug":{"_type":"slug","current":"tos"},"title":"TOS"},
+{"_createdAt":"2024-04-05T06:48:01Z","_id":"83a1fe56-098d-45f2-afd0-6d88806e07b4","_rev":"Ar19jrAZ1MlIiaihKvzM7w","_type":"franchise","_updatedAt":"2024-04-05T06:48:01Z","slug":{"_type":"slug","current":"voyager"},"title":"Voyager"},
+
+]
