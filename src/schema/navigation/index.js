@@ -2,7 +2,7 @@
 //File location: schemas/documents
 
 import { GrNavigate } from "react-icons/gr";
-import { slug } from "@/schema/fields/slug";
+import { slug } from "@/src/schema/fields/slug";
 
 export default {
     name: 'navigation',

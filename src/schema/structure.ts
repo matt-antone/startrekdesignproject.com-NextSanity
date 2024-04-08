@@ -2,7 +2,7 @@
 import {
   singletonDocumentListItems,
   filteredDocumentListItems,
-} from '@/schema/plugins/sanity-plugin-singleton-tools';
+} from '@/src/schema/plugins/sanity-plugin-singleton-tools';
 import { PlugIcon } from '@sanity/icons';
 
 export const structure = (S:any, context:any) =>

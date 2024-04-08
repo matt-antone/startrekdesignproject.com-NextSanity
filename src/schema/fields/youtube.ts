@@ -1,6 +1,6 @@
 import type { PreviewProps, PreviewLayoutKey } from 'sanity'
 import { defineField, defineType } from 'sanity'
-import VideoPlayerPreview from '@/components/VideoPlayerPreview'
+import VideoPlayerPreview from '@/src/components/VideoPlayerPreview'
 export const youtube = defineType({
   name: 'youtube',
   title: 'Youtube',

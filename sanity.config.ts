@@ -6,7 +6,7 @@ import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { singletonTools } from "sanity-plugin-singleton-tools";
-import { structure } from "@/schema/structure";
+import { structure } from "@/src/schema/structure";
 import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 
 

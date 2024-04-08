@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import type { PreviewProps, PreviewLayoutKey } from 'sanity'
-import VideoPlayerPreview from '@/components/VideoPlayerPreview'
+import VideoPlayerPreview from '@/src/components/VideoPlayerPreview'
 
 export const vimeo = defineType({
   name: 'vimeo',
