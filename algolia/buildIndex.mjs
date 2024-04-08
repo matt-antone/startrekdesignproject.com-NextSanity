@@ -15,7 +15,6 @@ const transformPostsToSearchObjects = (posts) => {
 export const buildIndex = async (indexName,posts) => {
     try {
       const transformed = transformPostsToSearchObjects(posts);
-      console.log(transformed)
       // // initialize the client with your environment variables
       const client = algoliasearch(
         process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
@@ -27,7 +26,6 @@ export const buildIndex = async (indexName,posts) => {
 
       // // save the objects!
       const algoliaResponse = await index.replaceAllObjects(transformed);
-        console.log(transformed)
       // check the output of the response in the console
       console.log(
         `🎉 Sucessfully added ${algoliaResponse.objectIDs.length} records to Algolia search (${indexName}). Object IDs:\n${algoliaResponse.objectIDs.join(

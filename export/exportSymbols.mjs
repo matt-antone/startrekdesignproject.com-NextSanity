@@ -85,9 +85,9 @@ await (async () => {
     if (i === files.length - 1) {
       fs.writeFile("./symbols.ndjson", postsString, (err) => {
         if (err) {
-          // console.error(err);
+          console.error(err);
         } else {
-          // console.log('wrote to file');
+          console.log('wrote to file');
           // file written successfully
         }
       });
