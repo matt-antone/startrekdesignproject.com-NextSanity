@@ -15,6 +15,27 @@ export default defineType({
     fields.title,
     fields.slug,
     fields.excerpt,
+    {
+      type: "object",
+      name: "hero",
+      title: "Hero",
+      fields: [
+        fields.body,
+        {
+          name: "heroImage",
+          title: "Hero Image",
+          type: "image",
+          fields: [
+            {
+              name: "alt",
+              title: "Alt Text",
+              type: "string",
+              validation: (Rule:any) => Rule.required(),
+            },
+          ],
+        },
+      ],
+    },
     fields.body,
   ],
   preview: {

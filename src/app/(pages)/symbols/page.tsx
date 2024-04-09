@@ -1,6 +1,6 @@
 import * as React from 'react';
 import SymbolList from './SymbolList';
-import PageHeader from '../components/PageHeader';
+import PageHeader from '../../components/PageHeader';
 
 interface ISymbolsProps {
 }

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { client } from "@/sanity/lib/client";
-import PageHeader from "../../components/PageHeader";
+import PageHeader from "../../../components/PageHeader";
 import PortableText from "@/src/app/components/PortableText";
 import Link from "next/link";
 

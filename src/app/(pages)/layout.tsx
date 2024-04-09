@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Inter, Barlow } from "next/font/google";
 import SpaceTravel from "./SpaceTravel";
 import "./globals.css";
-import Header from "./components/Header";
-import Container from "./components/Container";
+import Header from "../components/Header";
+import Container from "../components/Container";
 import type { Viewport } from 'next'
-import Footer from "./components/Footer";
+import Footer from "../components/Footer";
  
 export const viewport: Viewport = {
   width: 'device-width',
