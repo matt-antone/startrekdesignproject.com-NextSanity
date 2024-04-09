@@ -32,7 +32,7 @@ const RandomPosts: React.FunctionComponent<IRandomPostsProps> = ({ post }) => {
   console.log("posts", posts);
   return (
     <div>
-      <h2 className="text-center my-12 text-2xl font-bold">Random Posts</h2>
+      <h2 className="text-center my-12 text-2xl font-bold">Random Symbols</h2>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 items-center text-center">
         {posts.length > 0 ? (
           posts.map((symbol: any) => {
