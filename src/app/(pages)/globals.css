@@ -21,3 +21,7 @@
     text-wrap: balance;
   }
 }
+
+.prose img {
+  @apply mx-auto py-12;
+}
