@@ -35,7 +35,7 @@ const RandomPosts: React.FunctionComponent<IRandomPostsProps> = () => {
       <h2 className="text-center my-12 text-2xl font-bold">Random Symbols</h2>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 items-center text-center">
         {posts.length > 0 ? (
-          posts.map((symbol: any) => {
+          posts.map((symbol: any, i:number) => {
             return (
               <Link  key={symbol.link} href={symbol.link}>
                 <motion.div
@@ -43,7 +43,7 @@ const RandomPosts: React.FunctionComponent<IRandomPostsProps> = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   key={symbol.slug}
-                  transition={{ duration: 0.75, delay: 0.4 }}
+                  transition={{ duration: 0.75, delay: 0.4 * i }}
                   className="block w-full h-auto"
                 >
                   <article>

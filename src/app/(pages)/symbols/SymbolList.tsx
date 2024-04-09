@@ -18,7 +18,7 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
 ) => {
   const client = await useAlgolia();
   const paginationClasses = {
-    root: "", //The root element of the widget.
+    root: "mb-12", //The root element of the widget.
     noRefinementRoot: "", //The root element when there are no refinements.
     list: "flex gap-4", //The list element.
     item: "", //Each item element.
