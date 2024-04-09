@@ -80,7 +80,7 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
           <ul className="grid gap-4 text-lg">
             <li className="flex justify-between items-center">
               <span className="font-bold">Affiliations</span>{" "}
-              <span>{post.affiliations.join(", ")}</span>
+              <span>{post.affiliations?.join(", ")}</span>
             </li>
             <li className="flex justify-between items-center">
               <span className="font-bold">Quadrant:</span>{" "}
@@ -92,7 +92,7 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
             </li>
             <li className="flex justify-between items-center">
               <span className="font-bold">Universe:</span>{" "}
-              <span>{post.universes.join(", ")}</span>
+              <span>{post.universes?.join(", ")}</span>
             </li>
             <li className="flex justify-between items-center">
               <span className="font-bold">Franchise:</span>{" "}
@@ -100,7 +100,7 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
             </li>
             <li className="flex justify-between items-center">
               <span className="font-bold">Types:</span>{" "}
-              <span>{post.types.join(", ")}</span>
+              <span>{post.types?.join(", ")}</span>
             </li>
             {post.references && (
               <li className="flex justify-between items-center">
