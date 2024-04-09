@@ -52,7 +52,6 @@ export default async function RootLayout({
   let settings;
   try {
     settings = await client.fetch(query);
-    console.log("settings",settings);
   } catch (error) {
     console.error("Failed to fetch settings:", error);
   }

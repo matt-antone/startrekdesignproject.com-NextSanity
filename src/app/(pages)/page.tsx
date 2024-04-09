@@ -1,17 +1,40 @@
 import Image from "next/image";
+import { client } from "@/sanity/lib/client";
 
-export default function Home() {
+export default async function Home() {
+  const query = `*[_type == "home"]{
+    ...,
+    "heroImage": {
+      "src": hero.heroImage.asset->url,
+      alt,
+      caption,
+      "width": hero.heroImage.asset->metadata.dimensions.width,
+      "height": hero.heroImage.asset->metadata.dimensions.height
+    }
+  }[0]`;
+  const post = await client.fetch(query);
+  console.log("post", post.heroImage);
   return (
     <main>
+      {post.hero && (
+        <div id="hero">
+          {post.hero.heroImage && (
+            <img
+              src={post.heroImage.src}
+              alt="hero image"
+              className="mx-auto"
+              width={post.heroImage.width}
+              height={post.heroImage.height}
+            />
+          )}
+        </div>
+      )}
       <div id="block-wraper-0">
         <section id="" className="py-8">
           <div
             id=""
             className="px-2 xs:px-4 sm:px-8 md:px-0 w-full mx-auto md:max-w-3xl lg:max-w-4xl xl:max-w-5xl  "
           >
-            <div id="hero">
-              
-            </div>
             <div className="">
               <div className="undefined">
                 <div className="prose prose-white max-w-none w-full">

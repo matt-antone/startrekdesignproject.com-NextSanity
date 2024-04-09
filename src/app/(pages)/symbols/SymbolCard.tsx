@@ -6,7 +6,6 @@ interface ISymbolCardProps {
 }
 
 const SymbolCard: React.FunctionComponent<ISymbolCardProps> = ({hit}) => {
-  console.log(hit);
   return (
     <Link href={hit.link}>
       <article>

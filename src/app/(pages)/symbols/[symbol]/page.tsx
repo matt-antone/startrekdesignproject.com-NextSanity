@@ -48,7 +48,6 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   // read route params
   const post = await client.fetch(query, { slug: params.symbol });
-  console.log("post",post); 
   return {
     title: post.title,
   }
@@ -63,8 +62,6 @@ interface ISymbolPageProps {
 const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
   params: { symbol: slug },
 }) => {
-  // console.log(slug);
-
   const post = await client.fetch(query, { slug });
   return (
     <>
