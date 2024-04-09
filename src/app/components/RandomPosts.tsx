@@ -4,10 +4,9 @@ import { client } from "@/sanity/lib/client";
 import { get } from "http";
 
 interface IRandomPostsProps {
-  post: any;
 }
 
-const RandomPosts: React.FunctionComponent<IRandomPostsProps> = ({ post }) => {
+const RandomPosts: React.FunctionComponent<IRandomPostsProps> = () => {
   const indexSeed1 = Math.floor(Math.random() * 500);
   const [posts, setPosts] = React.useState([]);
   React.useEffect(() => {
