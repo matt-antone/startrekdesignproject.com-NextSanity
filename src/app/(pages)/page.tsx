@@ -24,7 +24,7 @@ export default async function Home() {
             <img
               src={post.heroImage.src}
               alt="hero image"
-              className="mx-auto mb-12"
+              className="mx-auto mb-12 block rotate"
               width={post.heroImage.width / 1.5}
               height={post.heroImage.height / 1.5}
             />

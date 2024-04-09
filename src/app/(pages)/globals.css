@@ -25,3 +25,19 @@
 .prose img {
   @apply mx-auto py-12;
 }
+
+.rotate {
+  animation-name: rotate_animation;
+  animation-duration: 15s;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rotate_animation {
+  0% {
+    transform: rotate3d(0, 1, 0, 360deg);
+  }
+  100% {
+    transform: rotate3d(0, 1, 0, 0deg);
+  }
+}

@@ -1,10 +1,10 @@
 "use client";
 import * as React from "react";
 import { client } from "@/sanity/lib/client";
-import { get } from "http";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
-interface IRandomPostsProps {
-}
+interface IRandomPostsProps {}
 
 const RandomPosts: React.FunctionComponent<IRandomPostsProps> = () => {
   const indexSeed1 = Math.floor(Math.random() * 500);
@@ -19,7 +19,8 @@ const RandomPosts: React.FunctionComponent<IRandomPostsProps> = () => {
         caption,
         "width": featuredImage.asset->metadata.dimensions.width,
         "height": featuredImage.asset->metadata.dimensions.height
-      }
+      },
+      "link": "/symbols/" + slug.current
     }[${indexSeed1}...${indexSeed1 + 4}]`;
     console.log("query", query);
     const getPosts = async () => {
@@ -30,42 +31,77 @@ const RandomPosts: React.FunctionComponent<IRandomPostsProps> = () => {
   }, []);
   console.log("posts", posts);
   return (
-    <div>
+    <div className="mb-24">
       <h2 className="text-center my-12 text-2xl font-bold">Random Symbols</h2>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 items-center text-center">
         {posts.length > 0 ? (
           posts.map((symbol: any) => {
             return (
-              <div key={symbol.slug} className="mb-12">
-                {symbol.featuredImage && (
-                  <img
-                    src={symbol.featuredImage.src}
-                    alt={symbol.title}
-                    width={symbol.featuredImage.width / 1.5}
-                    height={symbol.featuredImage.height / 1.5}
-                    className="mx-auto block"
-                  />
-                )}
-                <h2 className="text-center">
-                  <a href={`/symbols/${symbol.slug}`}>{symbol.title}</a>
-                </h2>
-              </div>
+              <Link href={symbol.link}>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  key={symbol.slug}
+                  transition={{ duration: 0.75, delay: 0.4 }}
+                  className="block w-full h-auto"
+                >
+                  <article>
+                    <header className="text-center">
+                      {symbol.featuredImage ? (
+                        <img
+                          src={symbol.featuredImage.src}
+                          alt={symbol.title}
+                          width={300}
+                          height={300}
+                          className="block w-full h-auto"
+                        />
+                      ) : null}
+                      <h1>{symbol.title}</h1>
+                    </header>
+                  </article>
+                </motion.div>
+              </Link>
             );
           })
         ) : (
           <>
-            <div className="w-64 h-64 max-w-[100%] flex justify-center items-center text-center">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3 }}
+              className="w-72 h-72 flex justify-center items-center" 
+            >
               loading
-            </div>
-            <div className="w-64 h-64 max-w-[100%] flex justify-center items-center text-center">
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3 }}
+              className="w-72 h-72 flex justify-center items-center" 
+            >
               loading
-            </div>
-            <div className="w-64 h-64 max-w-[100%] flex justify-center items-center text-center">
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3 }}
+              className="w-72 h-72 flex justify-center items-center" 
+            >
               loading
-            </div>
-            <div className="w-64 h-64 max-w-[100%] flex justify-center items-center text-center">
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3 }}
+              className="w-72 h-72 flex justify-center items-center" 
+            >
               loading
-            </div>
+            </motion.div>{" "}
           </>
         )}
       </div>
