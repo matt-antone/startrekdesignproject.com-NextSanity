@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Barlow } from "next/font/google";
 import SpaceTravel from "./SpaceTravel";
 import "./globals.css";
 import Header from "./components/Header";
 import Container from "./components/Container";
 
-const inter = Inter({ subsets: ["latin"] });
+const barlow = Barlow({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} text-white`}>
+      <body className={`${barlow.className} text-white`}>
         <SpaceTravel />
         <Header />
         <div className="relative z-10">

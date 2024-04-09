@@ -7,7 +7,7 @@ interface IPageHeaderProps {
 const PageHeader: React.FunctionComponent<IPageHeaderProps> = ({title}) => {
   return (
     <div>
-      <h1 className='text-2xl font-bold mb-8'>{title}</h1>
+      <h1 className='text-3xl font-bold mb-8'>{title}</h1>
     </div>
   );
 };

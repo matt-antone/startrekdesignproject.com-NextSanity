@@ -16,6 +16,7 @@
     "postbuild": "node algolia/index.mjs"
   },
   "dependencies": {
+    "@portabletext/react": "^3.0.17",
     "@sanity/client": "^6.12.4",
     "@sanity/export": "^3.36.4",
     "@sanity/icons": "^2.8",
@@ -23,6 +24,7 @@
     "@sanity/types": "^3.25",
     "@sanity/ui": "^2.0",
     "@sanity/vision": "3",
+    "@tailwindcss/typography": "^0.5.12",
     "algoliasearch": "^4.23.2",
     "dotenv": "^16.4.5",
     "front-matter": "^4.0.2",

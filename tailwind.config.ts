@@ -1,4 +1,7 @@
 import type { Config } from "tailwindcss";
+import typography from "@tailwindcss/typography";
+import {proseWhite} from "./src/styles/white";
+import { white } from "tailwindcss/colors";
 
 const config: Config = {
   content: [
@@ -13,8 +16,13 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      typography: () => ({
+        white: proseWhite.white,
+      }),
     },
   },
-  plugins: [],
+  plugins: [
+    typography,
+  ],
 };
 export default config;
