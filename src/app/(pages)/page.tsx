@@ -31,7 +31,7 @@ export default async function Home() {
   return (
     <main>
       {post.hero && (
-        <div id="hero" className="text-center mb-12">
+        <div id="hero" className="text-center mb-24">
           {post.hero.heroImage && (
             <img
               src={post.heroImage.src}
@@ -44,7 +44,7 @@ export default async function Home() {
           {post?.hero?.body && <PortableText value={post.hero.body} />}
         </div>
       )}
-          <h2 className="text-center mb-12">Random Posts</h2>
+          <h2 className="text-center my-12 text-2xl font-bold">Random Posts</h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 items-center">
             {post.randos ? post.randos.map((symbol: any) => {
               return (
