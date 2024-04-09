@@ -37,7 +37,7 @@ const RandomPosts: React.FunctionComponent<IRandomPostsProps> = () => {
         {posts.length > 0 ? (
           posts.map((symbol: any) => {
             return (
-              <Link href={symbol.link}>
+              <Link  key={symbol.link} href={symbol.link}>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
