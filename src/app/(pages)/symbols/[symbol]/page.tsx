@@ -3,6 +3,61 @@ import { client } from "@/sanity/lib/client";
 import PageHeader from "../../../components/PageHeader";
 import PortableText from "@/src/app/components/PortableText";
 import Link from "next/link";
+import type { Metadata, ResolvingMetadata } from 'next'
+
+const query = `*[_type == "post" && slug.current == $slug]{
+  ...,
+  "slug": slug.current,
+  "featuredImage": {
+    "src": featuredImage.asset->url,
+    alt,
+    caption,
+    "width": featuredImage.asset->metadata.dimensions.width,
+    "height": featuredImage.asset->metadata.dimensions.height
+  },
+  "timePeriod": timePeriod->.title,
+  "quadrant": quadrant->.title,
+  "universes": universes[]->.title,
+  "affiliations": affiliations[]->.title,
+  "types": types[]->title,
+  "franchise": franchise->.title,
+  "sameUniverse": *[_type == "post" && slug.current != $slug && count(universes[]->.title[@ in ^.^.universes]) > 0]{
+    _id,
+    title,
+    slug,
+    "featuredImage": {
+      "src": featuredImage.asset->url,
+      alt,
+      caption,
+      "width": featuredImage.asset->metadata.dimensions.width,
+      "height": featuredImage.asset->metadata.dimensions.height
+    },
+    "related": math::sum( [
+      count(universes[]->.title[@ in ^.^.universes]),
+      count(affiliations[]->.title[@ in ^.^.affiliations]),
+      count(types[]->title[@ in ^.^.types]),
+    ])
+  } | order(related desc) [0...6]
+}[0]`;
+
+type Props = {
+  params: { symbol: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // read route params
+  const post = await client.fetch(query, { slug: params.symbol });
+  console.log("post",post); 
+  return {
+    title: post.title,
+  }
+}
 
 interface ISymbolPageProps {
   params: {
@@ -13,43 +68,9 @@ interface ISymbolPageProps {
 const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
   params: { symbol: slug },
 }) => {
-  console.log(slug);
-  const query = `*[_type == "post" && slug.current == "${slug}"]{
-    ...,
-    "slug": slug.current,
-    "featuredImage": {
-      "src": featuredImage.asset->url,
-      alt,
-      caption,
-      "width": featuredImage.asset->metadata.dimensions.width,
-      "height": featuredImage.asset->metadata.dimensions.height
-    },
-    "timePeriod": timePeriod->.title,
-    "quadrant": quadrant->.title,
-    "universes": universes[]->.title,
-    "affiliations": affiliations[]->.title,
-    "types": types[]->title,
-    "franchise": franchise->.title,
-    "sameUniverse": *[_type == "post" && slug.current != "${slug}" && count(universes[]->.title[@ in ^.^.universes]) > 0]{
-      _id,
-      title,
-      slug,
-      "featuredImage": {
-        "src": featuredImage.asset->url,
-        alt,
-        caption,
-        "width": featuredImage.asset->metadata.dimensions.width,
-        "height": featuredImage.asset->metadata.dimensions.height
-      },
-      "related": math::sum( [
-        count(universes[]->.title[@ in ^.^.universes]),
-        count(affiliations[]->.title[@ in ^.^.affiliations]),
-        count(types[]->title[@ in ^.^.types]),
-      ])
-    } | order(related desc) [0...6]
-  }`;
-  const [post] = await client.fetch(query);
-  console.log(post);
+  // console.log(slug);
+
+  const post = await client.fetch(query, { slug });
   return (
     <>
       <div className="lg:flex gap-12 w-full items-center">
