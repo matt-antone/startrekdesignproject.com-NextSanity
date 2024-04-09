@@ -10,7 +10,7 @@ const SpaceTravel: React.FunctionComponent<ISpaceTravelProps> = (props) => {
       {/* <Script src="https://unpkg.com/space-travel?module" /> */}
       <canvas
         id="space-travel"
-        className="fixed w-screen h-screen top-0 left-0"
+        className="fixed w-screen h-screen top-0 left-0 z-0"
       ></canvas>
       <Script
         id="space-travel-script"

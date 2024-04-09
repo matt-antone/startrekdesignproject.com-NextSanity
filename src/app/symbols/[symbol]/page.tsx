@@ -52,7 +52,7 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
   console.log(post);
   return (
     <>
-      <div className="flex gap-12 w-full items-center">
+      <div className="lg:flex gap-12 w-full items-center">
         <div className="basis-1/2">
           <img
             src={post?.featuredImage?.src || ""}
@@ -64,7 +64,7 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
         </div>
         <div className="basis-1/2">
           <PageHeader title={post.title} />
-          <ul className="grid gap-4 text-xl">
+          <ul className="grid gap-4 text-lg">
             <li className="flex justify-between items-center">
               <span className="font-bold">Affiliations</span>{" "}
               <span>{post.affiliations.join(", ")}</span>
@@ -104,7 +104,7 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
           )}
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-12 w-full items-start">
+      <div className="md:grid grid-cols-2 gap-12 w-full items-start py-12">
         <div>
           <PortableText value={post.body} />
         </div>

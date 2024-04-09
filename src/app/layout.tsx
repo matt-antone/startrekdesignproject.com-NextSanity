@@ -4,6 +4,17 @@ import SpaceTravel from "./SpaceTravel";
 import "./globals.css";
 import Header from "./components/Header";
 import Container from "./components/Container";
+import type { Viewport } from 'next'
+import Footer from "./components/Footer";
+ 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  // Also supported by less commonly used
+  // interactiveWidget: 'resizes-visual',
+}
 
 const barlow = Barlow({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
@@ -25,6 +36,7 @@ export default function RootLayout({
         <div className="relative z-10">
           <Container>{children}</Container>
         </div>
+        <Footer />
       </body>
     </html>
   );

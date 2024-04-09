@@ -44,7 +44,7 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
     checkbox: "", //The checkbox of each item.
     labelText: "", //The text element of each label.
     count:
-      "inline-flex text-xs justify-center items-center p-0 px-1 rounded bg-white text-black opacity-60", //The count of each item.
+      "hidden lg:inline-flex text-xs justify-center items-center p-0 px-1 rounded bg-white text-black opacity-60", //The count of each item.
     showMore: "", //The “Show more” button.
     disabledShowMore: "", //The disabled “Show more” button.
   };
@@ -56,7 +56,7 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
         //filters="free_shipping:true"
         hitsPerPage={48}
       />
-      <div className="grid grid-cols-10 gap-12">
+      <div className="lg:grid grid-cols-10 gap-12">
         <div className="col-span-8">
           {/* Main */}
           <SearchBox placeholder="search" classNames={{
@@ -75,13 +75,13 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
             hitComponent={SymbolCard}
             classNames={{
               item: "col-span-1",
-              list: "grid grid-cols-4 w-full gap-12",
+              list: "grid grid-cols-3 lg:grid-cols-4 w-full gap-12 mb-12",
             }}
           />
           <Pagination classNames={paginationClasses} />
         </div>
         {/* Sidebar */}
-        <div className="col-span-2">
+        <div className="py-12 lg:py-0 col-span-2 grid grid-cols-3 gap-2 lg:block">
           <div className="mb-8">
             <h2 className="font-bold mb-2">Time Period</h2>
             <RefinementList

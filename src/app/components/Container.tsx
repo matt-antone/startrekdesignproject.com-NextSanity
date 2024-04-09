@@ -6,7 +6,7 @@ interface IContainerProps {
 
 const Container: React.FunctionComponent<IContainerProps> = (props) => {
   return (
-    <div className="w-full max-w-[1000px] mx-auto px-4">
+    <div className="w-full max-w-[1000px] mx-auto px-12">
       {props.children}
     </div>
   );
