@@ -27,7 +27,7 @@ const components = {
 
 const PortableText: React.FunctionComponent<IPortableTextProps> = (props) => {
   return (
-    <div className="prose prose-white">
+    <div className="prose prose-white max-w-none">
       <SanityPortableText value={props.value} components={components} />
     </div>
   )
