@@ -40,15 +40,10 @@ const query = `*[_type == "post" && slug.current == $slug]{
   } | order(related desc) [0...6]
 }[0]`;
 
-type Props = {
-  params: { symbol: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
-
 
 
 export async function generateMetadata(
-  { params, searchParams }: Props,
+  { params, searchParams }: any,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // read route params
