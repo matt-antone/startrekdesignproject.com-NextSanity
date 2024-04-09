@@ -28,16 +28,18 @@
 
 .rotate {
   animation-name: rotate_animation;
-  animation-duration: 15s;
+  animation-duration: 10s;
   animation-delay: 0s;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
 }
 
 @keyframes rotate_animation {
   0% {
     transform: rotate3d(0, 1, 0, 360deg);
+    /* opacity: 0; */
   }
   100% {
     transform: rotate3d(0, 1, 0, 0deg);
+    /* opacity: 1; */
   }
 }
