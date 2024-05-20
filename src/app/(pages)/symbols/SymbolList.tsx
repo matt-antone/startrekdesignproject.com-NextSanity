@@ -8,6 +8,8 @@ import {
   RefinementList,
   Pagination,
   SearchBox,
+  Stats,
+  SortBy,
 } from "react-instantsearch";
 import SymbolCard from "./SymbolCard";
 
@@ -59,18 +61,39 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
       <div className="lg:grid grid-cols-10 gap-12">
         <div className="col-span-8">
           {/* Main */}
-          <SearchBox placeholder="search" classNames={{
-            root: "pb-4", //The root element of the widget.
-            form: "", //The form element.
-            input: "bg-transparent border border-white w-full text-white px-2", //The input element.
-            submit: "", //The submit button.
-            reset: "", //The reset button.
-            loadingIndicator: "", //The loading indicator element.
-            submitIcon: "", //The submit icon.
-            resetIcon: "", //The reset icon.
-            loadingIcon: "", //The loading icon.
-          }}/>
-          <Pagination classNames={paginationClasses} />
+          <SearchBox
+            placeholder="search"
+            classNames={{
+              root: "pb-4", //The root element of the widget.
+              form: "", //The form element.
+              input:
+                "bg-transparent border border-white w-full text-white px-2", //The input element.
+              submit: "", //The submit button.
+              reset: "", //The reset button.
+              loadingIndicator: "", //The loading indicator element.
+              submitIcon: "", //The submit icon.
+              resetIcon: "", //The reset icon.
+              loadingIcon: "", //The loading icon.
+            }}
+          />
+          <div className="flex justify-between">
+            <Pagination classNames={paginationClasses} />
+            <div className="text-black">
+              <SortBy
+                items={[
+                  { label: "Date (desc)", value: "posts_date_desc" },
+                  { label: "Date (asc)", value: "posts_date_asc" },
+                  { label: "Title (asc)", value: "posts_title_asc" },
+                  { label: "Title (desc)", value: "posts_title_desc" },
+                ]}
+                classNames={{
+                  root: 'MyCustomSortBy',
+                  select: 'MyCustomSortBySelect MyCustomSortBySelect--subclass',
+                }}
+              />
+            </div>
+            <Stats />
+          </div>
           <Hits
             hitComponent={SymbolCard}
             classNames={{
@@ -86,10 +109,10 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
             <h2 className="font-bold mb-2">Time Period</h2>
             <RefinementList
               attribute="timePeriod.title"
-              limit={5}
-              showMoreLimit={10}
+              limit={15}
+              showMoreLimit={16}
               classNames={refinementClasses}
-              showMore
+              sortBy={["name:asc"]}
             />
           </div>
 
@@ -97,10 +120,10 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
             <h2 className="font-bold mb-2">Quadrant</h2>
             <RefinementList
               attribute="quadrant.title"
-              limit={5}
-              showMoreLimit={10}
+              limit={15}
+              showMoreLimit={16}
               classNames={refinementClasses}
-              showMore
+              sortBy={["name:asc"]}
             />
           </div>
 
@@ -108,10 +131,10 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
             <h2 className="font-bold mb-2">Universe</h2>
             <RefinementList
               attribute="universes.title"
-              limit={6}
-              showMoreLimit={10}
+              limit={15}
+              showMoreLimit={16}
               classNames={refinementClasses}
-              showMore
+              sortBy={["name:asc"]}
             />
           </div>
 
@@ -119,10 +142,10 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
             <h2 className="font-bold mb-2">Affiliation</h2>
             <RefinementList
               attribute="affiliations.title"
-              limit={5}
-              showMoreLimit={10}
+              limit={15}
+              showMoreLimit={16}
               classNames={refinementClasses}
-              showMore
+              sortBy={["name:asc"]}
             />
           </div>
 
@@ -130,9 +153,10 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
             <h2 className="font-bold mb-2">Type</h2>
             <RefinementList
               attribute="types.title"
-              limit={5}
-              showMoreLimit={10}
+              limit={15}
+              showMoreLimit={16}
               classNames={refinementClasses}
+              sortBy={["name:asc"]}
               showMore
             />
           </div>
