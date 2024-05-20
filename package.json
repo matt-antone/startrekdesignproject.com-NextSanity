@@ -40,7 +40,7 @@
     "react-instantsearch": "^7.7.1",
     "react-player": "^2.15.1",
     "react-schemaorg": "^2.0.0",
-    "sanity": "^3.25",
+    "sanity": "^3.42.1",
     "sanity-plugin-singleton-tools": "^1.0.1",
     "sanity-plugin-vercel-deploy": "^3.3.4",
     "schema-dts": "^1.1.2",
