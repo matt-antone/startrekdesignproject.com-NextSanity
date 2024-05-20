@@ -47,19 +47,19 @@ export const PostSchema = {
       type: "array",
       name: "universes",
       label: "Universes",
-      of: [{ type: "universe" }],
+      of: [{ type: "reference", to: [{ type: "universe" }] }],
     },
     {
       type: "array",
       name: "affiliations",
       label: "Affiliations",
-      of: [{ type: "affiliation" }],
+      of: [{ type: "reference", to: [{ type: "affiliation" }] }],
     },
     {
       type: "array",
       name: "types",
       label: "Types",
-      of: [{ type: "types" }],
+      of: [{ type: "reference", to: [{ type: "types" }] }],
     },
     {
       type: "reference",
