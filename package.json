@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:search": "node algolia/index.mjs",
     "start": "next start",
     "lint": "next lint",
     "export": "node export/exportSymbols.mjs",
