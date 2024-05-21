@@ -8,18 +8,18 @@ const findTaxonomy = (list, term) => {
 };
 
 export const getTaxonomy = (post, key, list, target) => {
+  
   const term = post.attributes.hasOwnProperty("taxonomy")
-    ? post.attributes.taxonomy[key]
-    : null;
+    && post.attributes.taxonomy[key];
   if (typeof term === "string") {
     const taxonomy = findTaxonomy(list, term);
     return taxonomy ? { _ref: taxonomy, _type: "reference" } : null;
   } else if (Array.isArray(term) && term.length > 0) {
     const taxonomies = term.map((t) => {
       const taxonomy = findTaxonomy(list, t);
-      return taxonomy ? { _ref: taxonomy, _type: target } : null;
+      return taxonomy ? { _ref: taxonomy } : null;
     });
     return taxonomies;
   }
-  return null;
+  // return null;
 };

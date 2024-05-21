@@ -9,13 +9,8 @@ import { Schema } from "@sanity/schema";
 // const md = markdownit();
 // import PostSchema from '../src/schema/post';
 import { getDirectory, getFile } from "./lib/index.mjs";
-import { affiliations } from "./lib/affiliations.mjs";
-import { franchises } from "./lib/franchises.mjs";
-import { quadrants } from "./lib/quadrants.mjs";
-import { timePeriods } from "./lib/timePeriods.mjs";
-import { universes } from "./lib/universes.mjs";
-import { types } from "./lib/types.mjs";
 import { PostSchema } from "./PostSchema.mjs";
+import { taxonomies } from "./lib/all-taxonomies.mjs";
 
 import { getTaxonomy } from "./lib/getTaxonomy.mjs";
 import { convertMarkdown } from "./lib/convertMarkdown.mjs";
@@ -25,7 +20,7 @@ import { convertMarkdown } from "./lib/convertMarkdown.mjs";
 
 
 // Define the directory where the old content is stored
-const filesDir = "export/oldsymbols";
+const filesDir = "export/content/symbols";
 const basepath = path.join(process.cwd(), filesDir);
 
 // Start with compiling a schema we can work against
@@ -40,6 +35,7 @@ const blockContentType = defaultSchema
   .fields.find((field) => field.name === "body").type;
 
 const convertPostToSanityPost = (post) => {
+  !post.attributes?.featuredImg?.src && console.log('converting',post.attributes.title);
   const spDate = post.attributes.date;
   // const spDate = new Date(post.attributes.date).toISOString()
   const sp = {
@@ -47,7 +43,7 @@ const convertPostToSanityPost = (post) => {
     date: post.attributes.date,
     _createdAt: spDate,
     _publishedAt: spDate,
-    title: post.attributes.title || "Untitled",
+    title: post.attributes.title.trim() || "Untitled",
     body: convertMarkdown(post.body, blockContentType) || [],
     slug: {
       _type: "slug",
@@ -55,22 +51,42 @@ const convertPostToSanityPost = (post) => {
     },
     weight: post.attributes.weight,
     tags: post.attributes.tags,
-    featuredImage: post.attributes.featuredImg?.src && {
-      _type: "image",
-      _sanityAsset: `image@${post.attributes.featuredImg.src}`,
-      alt: post.attributes.featuredImg?.alt || null,
-      caption: post.attributes.featuredImg?.caption || null,
-    },
-    timePeriod: getTaxonomy(post, "time", timePeriods),
-    quadrant: getTaxonomy(post, "quadrants", quadrants),
-    universes: getTaxonomy(post, "universes", universes, "universe"),
-    affiliations: getTaxonomy(post, "affiliations", affiliations, "affiliation"),
-    franchise: getTaxonomy(post, "franchise", franchises),
-    types: getTaxonomy(post, "types", types, "types"),
+    // featuredImage: post.attributes.featuredImg?.src && {
+    //   _type: "image",
+    //   _sanityAsset: `image@${post.attributes.featuredImg.src}`,
+    //   alt: post.attributes.featuredImg?.alt || post.attributes.featuredImg.src.substring(post.attributes.featuredImg.src.lastIndexOf('/')+1),
+    //   // caption: post.attributes.featuredImg?.caption || null,
+    // },
+    // timePeriod: getTaxonomy(post, "time", taxonomies, "timePeriod"),
+    // quadrant: getTaxonomy(post, "quadrants", taxonomies, "quadrant"),
+    // universes: getTaxonomy(post, "universes", taxonomies, "universe"),
+    // affiliations: getTaxonomy(post, "affiliations", taxonomies, "affiliation"),
+    // franchise: getTaxonomy(post, "franchise", taxonomies, "franchise"),
+    // types: getTaxonomy(post, "types", taxonomies, "types"),
     references: post?.attributes?.primary_reference ? convertMarkdown(post.attributes.primary_reference, blockContentType) : [],
-    memoryAlpha: post?.attributes?.memory_alpha_url ? post.attributes.memory_alpha_url : null,
+    memoryAlpha: post?.attributes?.memory_alpha_url ? post.attributes.memory_alpha_url : '',
     //timePeriods.find(tp => tp.title === post.attributes.timePeriod),
   };
+
+  const timePeriod = getTaxonomy(post, "time", taxonomies, "timePeriod")
+  const quadrant = getTaxonomy(post, "quadrants", taxonomies, "quadrant")
+  const universes = getTaxonomy(post, "universes", taxonomies, "universe")
+  const affiliations = getTaxonomy(post, "affiliations", taxonomies, "affiliation")
+  const franchise = getTaxonomy(post, "franchise", taxonomies, "franchise")
+  const types = getTaxonomy(post, "types", taxonomies, "types")
+
+  timePeriod !== null && (sp.timePeriod = timePeriod)
+  quadrant !== null && (sp.quadrant = quadrant)
+  universes && universes[0] && (sp.universes = universes)
+  affiliations && affiliations[0] && (sp.affiliations = affiliations)
+  franchise && franchise[0] && (sp.franchise = franchise)
+  types && types[0] && (sp.types = types)
+  post.attributes.featuredImg?.src && (sp.featuredImage = {
+    _type: "image",
+    _sanityAsset: `image@${post.attributes.featuredImg.src}`,
+    alt: post.attributes.featuredImg?.alt || post.attributes.featuredImg.src.substring(post.attributes.featuredImg.src.lastIndexOf('/')+1),
+  })
+
   const sanityPost = JSON.stringify(sp).replace(/\\n/g, "");
   return sanityPost;
 };

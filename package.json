@@ -14,7 +14,8 @@
     "import:affiliations": "sanity dataset import ./affiliation.ndjson --replace --allow-failing-assets",
     "import:symbol": "sanity dataset import ./symbol.ndjson --replace --allow-failing-assets",
     "delete:symbols": "sanity documents query \"*[_type == 'post']._id\" | groq \"*\" -o ndjson | xargs sanity documents delete",
-    "postbuild": "node algolia/index.mjs"
+    "postbuild": "node algolia/index.mjs",
+    "export:tax": "sanity dataset export production production.tar.gz --types affiliation,franchise,quadrant,timePeriod,universe,types --no-assets"
   },
   "dependencies": {
     "@portabletext/react": "^3.0.17",
@@ -41,6 +42,7 @@
     "react-player": "^2.15.1",
     "react-schemaorg": "^2.0.0",
     "sanity": "^3.42.1",
+    "sanity-plugin-media": "^2.2.5",
     "sanity-plugin-singleton-tools": "^1.0.1",
     "sanity-plugin-vercel-deploy": "^3.3.4",
     "schema-dts": "^1.1.2",

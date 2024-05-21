@@ -14,8 +14,7 @@ export function convertMarkdown(markdown, blockContentType){
             return block({
               _type: "image",
               _sanityAsset: `image@${el.src}`,
-              alt: el.alt || null,
-              caption: el.title || null,
+              alt: el.alt || el.src.substring(el.src.lastIndexOf('/')+1),
             });
           }
           return undefined;

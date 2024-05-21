@@ -1,0 +1,1 @@
+sanity documents query "*[_type in ['post','affiliation','franchise','quadrant','timePeriod','universe']][0...2000]._id" | groq "*" -o ndjson | xargs sanity documents delete

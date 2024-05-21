@@ -10,6 +10,7 @@ import {
   SearchBox,
   Stats,
   SortBy,
+  CurrentRefinements,
 } from "react-instantsearch";
 import SymbolCard from "./SymbolCard";
 
@@ -92,7 +93,15 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
                 }}
               />
             </div>
-            <Stats />
+            <div className="flex gap-4">
+              <CurrentRefinements
+                classNames={{
+                  root: 'MyCustomCurrentRefinements',
+                  list: 'MyCustomCurrentRefinementsList MyCustomCurrentRefinementsList--subclass',
+                }}
+              />
+              <Stats />
+            </div>
           </div>
           <Hits
             hitComponent={SymbolCard}
@@ -132,7 +141,6 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
             <RefinementList
               attribute="universes.title"
               limit={15}
-              showMoreLimit={16}
               classNames={refinementClasses}
               sortBy={["name:asc"]}
             />
@@ -142,8 +150,7 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
             <h2 className="font-bold mb-2">Affiliation</h2>
             <RefinementList
               attribute="affiliations.title"
-              limit={15}
-              showMoreLimit={16}
+              limit={50}
               classNames={refinementClasses}
               sortBy={["name:asc"]}
             />
@@ -153,11 +160,9 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
             <h2 className="font-bold mb-2">Type</h2>
             <RefinementList
               attribute="types.title"
-              limit={15}
-              showMoreLimit={16}
+              limit={1000}
               classNames={refinementClasses}
               sortBy={["name:asc"]}
-              showMore
             />
           </div>
         </div>
