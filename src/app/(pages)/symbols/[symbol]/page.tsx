@@ -3,7 +3,7 @@ import { client } from "@/sanity/lib/client";
 import PageHeader from "../../../components/PageHeader";
 import PortableText from "@/src/app/components/PortableText";
 import Link from "next/link";
-import type { Metadata, ResolvingMetadata } from 'next'
+import type { Metadata, ResolvingMetadata } from "next";
 
 const query = `*[_type == "post" && slug.current == $slug]{
   ...,
@@ -40,8 +40,6 @@ const query = `*[_type == "post" && slug.current == $slug]{
   } | order(related desc) [0...6]
 }[0]`;
 
-
-
 export async function generateMetadata(
   { params, searchParams }: any,
   parent: ResolvingMetadata
@@ -50,7 +48,7 @@ export async function generateMetadata(
   const post = await client.fetch(query, { slug: params.symbol });
   return {
     title: post.title,
-  }
+  };
 }
 
 interface ISymbolPageProps {
@@ -78,30 +76,44 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
         <div className="basis-1/2">
           <PageHeader title={post.title} />
           <ul className="grid gap-4 text-lg">
-            <li className="flex justify-between items-center">
-              <span className="font-bold">Affiliations</span>{" "}
-              <span>{post.affiliations?.join(", ")}</span>
-            </li>
-            <li className="flex justify-between items-center">
-              <span className="font-bold">Quadrant:</span>{" "}
-              <span>{post.quadrant}</span>
-            </li>
-            <li className="flex justify-between items-center">
-              <span className="font-bold">Time Period:</span>{" "}
-              <span>{post.timePeriod}</span>
-            </li>
-            <li className="flex justify-between items-center">
-              <span className="font-bold">Universe:</span>{" "}
-              <span>{post.universes?.join(", ")}</span>
-            </li>
-            <li className="flex justify-between items-center">
-              <span className="font-bold">Franchise:</span>{" "}
-              <span>{post.franchise}</span>
-            </li>
-            <li className="flex justify-between items-center">
-              <span className="font-bold">Types:</span>{" "}
-              <span>{post.types?.join(", ")}</span>
-            </li>
+            {post.affiliations && (
+              <li className="flex justify-between items-center">
+                <span className="font-bold">Affiliations</span>{" "}
+                <span>{post.affiliations?.join(", ")}</span>
+              </li>
+            )}
+            {post.quadrant && (
+              <li className="flex justify-between items-center">
+                <span className="font-bold">Quadrant:</span>{" "}
+                <span>{post.quadrant}</span>
+              </li>
+            )}
+
+            {post.timePeriod && (
+              <li className="flex justify-between items-center">
+                <span className="font-bold">Time Period:</span>{" "}
+                <span>{post.timePeriod}</span>
+              </li>
+            )}
+
+            {post.universes && (
+              <li className="flex justify-between items-center">
+                <span className="font-bold">Universe:</span>{" "}
+                <span>{post.universes?.join(", ")}</span>
+              </li>
+            )}
+            {post.franchise && (
+              <li className="flex justify-between items-center">
+                <span className="font-bold">Franchise:</span>{" "}
+                <span>{post.franchise}</span>
+              </li>
+            )}
+            {post.types && (
+              <li className="flex justify-between items-center">
+                <span className="font-bold">Types:</span>{" "}
+                <span>{post.types?.join(", ")}</span>
+              </li>
+            )}
             {post.references && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Reference:</span>{" "}
@@ -127,13 +139,13 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
             {post.sameUniverse.map((related: any) => (
               <li key={related._id} className="text-center">
                 <Link href={`/symbols/${related.slug.current}`}>
-                    <img
-                      src={related.featuredImage.src}
-                      alt={related.featuredImage.alt}
-                      width={related.featuredImage.width / 4}
-                      height={related.featuredImage.height / 4}
-                    />
-                    <h3>{related.title}</h3>
+                  <img
+                    src={related.featuredImage.src}
+                    alt={related.featuredImage.alt}
+                    width={related.featuredImage.width / 4}
+                    height={related.featuredImage.height / 4}
+                  />
+                  <h3>{related.title}</h3>
                 </Link>
               </li>
             ))}

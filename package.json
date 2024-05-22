@@ -14,6 +14,7 @@
     "import:affiliations": "sanity dataset import ./affiliation.ndjson --replace --allow-failing-assets",
     "import:symbol": "sanity dataset import ./symbol.ndjson --replace --allow-failing-assets",
     "delete:symbols": "sanity documents query \"*[_type == 'post']._id\" | groq \"*\" -o ndjson | xargs sanity documents delete",
+    "delete:oldsymbols": "sanity documents query \"*[_type == 'post' && dateTime(_createdAt) < dateTime('2024-04-16T07:00:00.000Z')]._id\" | groq \"*\" -o ndjson | xargs sanity documents delete",
     "postbuild": "node algolia/index.mjs",
     "export:tax": "sanity dataset export production production.tar.gz --types affiliation,franchise,quadrant,timePeriod,universe,types --no-assets"
   },

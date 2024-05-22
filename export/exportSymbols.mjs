@@ -79,7 +79,7 @@ const convertPostToSanityPost = (post) => {
   quadrant !== null && (sp.quadrant = quadrant)
   universes && universes[0] && (sp.universes = universes)
   affiliations && affiliations[0] && (sp.affiliations = affiliations)
-  franchise && franchise[0] && (sp.franchise = franchise)
+  franchise && (sp.franchise = franchise)
   types && types[0] && (sp.types = types)
   post.attributes.featuredImg?.src && (sp.featuredImage = {
     _type: "image",
