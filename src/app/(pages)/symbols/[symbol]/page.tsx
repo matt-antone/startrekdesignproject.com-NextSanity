@@ -75,7 +75,7 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
         </div>
         <div className="basis-1/2">
           <PageHeader title={post.title} />
-          <ul className="grid gap-4 text-lg mb-4">
+          <ul className="grid gap-4 text-lg mb-8">
             {post.affiliations && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Affiliations</span>{" "}
@@ -124,7 +124,7 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
             )}
           </ul>
           {post.memoryAlpha && (
-            <Link className="mt-4 underline" href={post.memoryAlpha}>Read More on Memory Alpha</Link>
+            <Link className="underline" href={post.memoryAlpha}>Read More on Memory Alpha</Link>
           )}
 
         </div>
