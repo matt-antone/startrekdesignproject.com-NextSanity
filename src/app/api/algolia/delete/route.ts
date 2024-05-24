@@ -17,6 +17,7 @@ export async function POST(request: Request) {
     );
     const index = client.initIndex(res._type);
     const algoliaResponse = await index.deleteObjects(remove);
+    console.log(algoliaResponse);
     return new Response("Hello world!");
   } catch (error) {
     console.error("Error updating Algolia", error);
