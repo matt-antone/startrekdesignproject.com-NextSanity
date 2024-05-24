@@ -13,7 +13,7 @@ export async function POST(request: Request) {
     // Add the post to Algolia
     const client = algoliasearch(
       process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || "",
-      process.env.ALGOLIA_ADMIN_KEY || ""
+      process.env.ALGOLIA_SEARCH_ADMIN_KEY || ""
     );
     const index = client.initIndex(res._type);
     const algoliaResponse = await index.deleteObjects(remove);
