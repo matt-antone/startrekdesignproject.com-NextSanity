@@ -15,7 +15,7 @@ export async function POST(request: Request) {
       process.env.ALGOLIA_SEARCH_ADMIN_KEY || ""
     );
     const index = client.initIndex(res._type);
-    const algoliaResponse = await index.deleteObjects(res.objectIDs);
+    const algoliaResponse = await index.deleteObject(res._id);
     console.log(algoliaResponse);
     revalidatePath("/symbols/" + res.slug);
     return new Response("Hello world!");
