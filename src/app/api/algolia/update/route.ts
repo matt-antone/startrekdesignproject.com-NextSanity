@@ -12,7 +12,7 @@ dotenv.config();
 
 //   const client = algoliasearch(
 //     process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || "",
-//     process.env.ALGOLIA_ADMIN_KEY || ""
+//     process.env.ALGOLIA_SEARCH_ADMIN_KEY || ""
 //   );
 
 //   for (const [key, value] of Object.entries(data)) {
@@ -20,7 +20,7 @@ dotenv.config();
 //       console.log(
 //         `Updating Algolia search (${key})`,
 //         process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
-//         process.env.ALGOLIA_ADMIN_KEY
+//         process.env.ALGOLIA_SEARCH_ADMIN_KEY
 //       );
 //       const index = client.initIndex(key);
 //       const algoliaResponse = await index.replaceAllObjects(value as any);
@@ -44,7 +44,7 @@ export async function POST(request: Request) {
     const res: SanityDocument = await request.json();
     const client = algoliasearch(
       process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || "",
-      process.env.ALGOLIA_ADMIN_KEY || ""
+      process.env.ALGOLIA_SEARCH_ADMIN_KEY || ""
     );
     const index = client.initIndex(res._type);
     res.objectID = res._id;
@@ -61,7 +61,7 @@ export async function POST(request: Request) {
       "Error updating Algolia",
       error,
       process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
-      process.env.ALGOLIA_ADMIN_KEY
+      process.env.ALGOLIA_SEARCH_ADMIN_KEY
     );
     return new Response("Error updating Algolia");
   }
