@@ -8,15 +8,14 @@ export async function POST(request: Request) {
   try {
     // POST THE LATEST POSTS
     const res = await request.json();
-    const remove = [res.objectIDs];
-
+    console.log("Deleting", res);
     // Add the post to Algolia
     const client = algoliasearch(
       process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || "",
       process.env.ALGOLIA_SEARCH_ADMIN_KEY || ""
     );
     const index = client.initIndex(res._type);
-    const algoliaResponse = await index.deleteObjects(remove);
+    const algoliaResponse = await index.deleteObjects(res.objectIDs);
     console.log(algoliaResponse);
     revalidatePath("/symbols/" + res.slug);
     return new Response("Hello world!");
