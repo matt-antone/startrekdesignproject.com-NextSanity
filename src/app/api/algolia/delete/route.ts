@@ -8,7 +8,7 @@ export async function POST(request: Request) {
   try {
     // POST THE LATEST POSTS
     const res = await request.json();
-    const remove = [res._id];
+    const remove = [res.objectIDs];
 
     // Add the post to Algolia
     const client = algoliasearch(
