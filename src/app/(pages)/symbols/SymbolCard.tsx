@@ -8,7 +8,6 @@ interface ISymbolCardProps {
 
 const SymbolCard: React.FunctionComponent<ISymbolCardProps> = (props) => {
   const { hit } = props;
-  console.log(hit);
   return (
     <Link href={"/symbols/" + hit.slug}>
       <AnimatePresence>
