@@ -62,8 +62,6 @@ export async function POST(request: Request) {
     console.error(
       "Error updating Algolia",
       error,
-      process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
-      process.env.ALGOLIA_SEARCH_ADMIN_KEY
     );
     return new Response("Error updating Algolia");
   }
