@@ -4,6 +4,7 @@ import { SanityDocument } from "next-sanity";
 import { loadQuery } from "@/sanity/lib/store";
 import { SITEMAP_QUERY } from "@/src/lib/queries";
 import dotenv from "dotenv";
+import { revalidatePath } from "next/cache";
 dotenv.config();
 
 // export async function GET(request: Request) {
@@ -55,6 +56,7 @@ export async function POST(request: Request) {
       console.log("updated these", objectIDs);
     });
     // console.log(algoliaResponse);
+    revalidatePath("/symbols/"+res.slug);
     return new Response(`UPDATED ${res._type}`);
   } catch (error) {
     console.error(
