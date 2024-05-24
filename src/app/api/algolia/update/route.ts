@@ -42,6 +42,7 @@ export async function POST(request: Request) {
   try {
     // POST THE LATEST POSTS
     const res = await request.json();
+    console.log("Updating Algolia", res);
     const client = algoliasearch(
       process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || "",
       process.env.ALGOLIA_ADMIN_KEY || ""
