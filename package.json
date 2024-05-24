@@ -24,6 +24,7 @@
     "@sanity/export": "^3.36.4",
     "@sanity/icons": "^2.8",
     "@sanity/image-url": "1",
+    "@sanity/react-loader": "^1.9.19",
     "@sanity/types": "^3.25",
     "@sanity/ui": "^2.0",
     "@sanity/vision": "3",
