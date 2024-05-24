@@ -16,10 +16,10 @@ import SymbolCard from "./SymbolCard";
 
 interface ISymbolsProps {}
 
-export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
+export const SymbolList: React.FunctionComponent<ISymbolsProps> = (
   props
 ) => {
-  const client = await useAlgolia();
+  const client = useAlgolia();
   const paginationClasses = {
     root: "mb-12", //The root element of the widget.
     noRefinementRoot: "", //The root element when there are no refinements.
