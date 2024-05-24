@@ -41,7 +41,7 @@ dotenv.config();
 export async function POST(request: Request) {
   try {
     // POST THE LATEST POSTS
-    const res:SanityDocument = await request.json();
+    const res: SanityDocument = await request.json();
     const client = algoliasearch(
       process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || "",
       process.env.ALGOLIA_ADMIN_KEY || ""
@@ -57,7 +57,12 @@ export async function POST(request: Request) {
     // console.log(algoliaResponse);
     return new Response(`UPDATED ${res._type}`);
   } catch (error) {
-    console.error("Error updating Algolia", error);
+    console.error(
+      "Error updating Algolia",
+      error,
+      process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+      process.env.ALGOLIA_ADMIN_KEY
+    );
     return new Response("Error updating Algolia");
   }
 }
