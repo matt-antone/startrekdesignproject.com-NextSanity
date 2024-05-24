@@ -37,35 +37,23 @@ export const getSymbols = async () => {
 
   const queryStr = `*[_type == "post"]{
     ...,
-    "featuredImage": {
-      "src": featuredImage.asset->url,
-      "alt": featuredImage.alt,
-      "caption": featuredImage.caption,
-    },
-    types[]->{
-      ...
-    },
-    universes[]->{
-      ...
-    },
-    franchise->{
-      ...
-    },
-    quadrant->{
-      ...
-    },
-    timePeriod->{
-      ...
-    },
-    references[]->{
-      ...
-    },
-    affiliations[]->{
-      ...
-    },
-  }`
+    "objectID": _id,
+    "slug": slug.current,
+    featuredImage{...,asset->{url,metadata{dimensions}}},
+    date,
+    title,
+    excerpt,
+    body,
+    "timePeriod": timePeriod->title,
+    "quadrant": quadrant->title,
+    "universes": universes[]->title,
+    "affiliations": affiliations[]->title,
+    "types": types[]->title,
+    "franchise": franchise->title,
+    references,
+}`
 
   const symbols = await client.fetch(queryStr);
-
+  console.log(symbols);
   return symbols;
 };

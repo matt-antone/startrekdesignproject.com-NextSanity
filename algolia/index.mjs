@@ -3,5 +3,5 @@ import { buildIndex } from "./buildIndex.mjs";
 
 (async function () {
   const symbols = await getSymbols();
-  await buildIndex("posts", symbols);
+  await buildIndex("post", symbols);
 })();

@@ -8,8 +8,9 @@ interface ISymbolCardProps {
 
 const SymbolCard: React.FunctionComponent<ISymbolCardProps> = (props) => {
   const { hit } = props;
+  console.log(hit);
   return (
-    <Link href={hit.link}>
+    <Link href={"/symbols/" + hit.slug}>
       <AnimatePresence>
         <motion.span
           initial={{ opacity: 0, scale: 0.9 }}
@@ -24,7 +25,7 @@ const SymbolCard: React.FunctionComponent<ISymbolCardProps> = (props) => {
             <header className="text-center">
               {hit.featuredImage ? (
                 <img
-                  src={hit.featuredImage.src}
+                  src={hit.featuredImage.asset.url}
                   alt={hit.title}
                   width={300}
                   height={300}

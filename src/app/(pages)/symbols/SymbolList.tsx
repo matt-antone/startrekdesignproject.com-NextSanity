@@ -53,7 +53,7 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
   };
 
   return (
-    <InstantSearch searchClient={client} indexName="posts">
+    <InstantSearch searchClient={client} indexName="post">
       <Configure
         analytics={false}
         //filters="free_shipping:true"
@@ -82,10 +82,10 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
             <div className="text-black">
               <SortBy
                 items={[
-                  { label: "Date (desc)", value: "posts_date_desc" },
-                  { label: "Date (asc)", value: "posts_date_asc" },
-                  { label: "Title (asc)", value: "posts_title_asc" },
-                  { label: "Title (desc)", value: "posts_title_desc" },
+                  { label: "Date (desc)", value: "post_date_desc" },
+                  { label: "Date (asc)", value: "post_date_asc" },
+                  { label: "Title (asc)", value: "post_title_asc" },
+                  { label: "Title (desc)", value: "post_title_desc" },
                 ]}
                 classNames={{
                   root: 'MyCustomSortBy',
@@ -117,7 +117,7 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
           <div className="mb-8">
             <h2 className="font-bold mb-2">Time Period</h2>
             <RefinementList
-              attribute="timePeriod.title"
+              attribute="timePeriod"
               limit={15}
               showMoreLimit={16}
               classNames={refinementClasses}
@@ -128,7 +128,7 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
           <div className="mb-8">
             <h2 className="font-bold mb-2">Quadrant</h2>
             <RefinementList
-              attribute="quadrant.title"
+              attribute="quadrant"
               limit={15}
               showMoreLimit={16}
               classNames={refinementClasses}
@@ -139,7 +139,7 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
           <div className="mb-8">
             <h2 className="font-bold mb-2">Universe</h2>
             <RefinementList
-              attribute="universes.title"
+              attribute="universes"
               limit={15}
               classNames={refinementClasses}
               sortBy={["name:asc"]}
@@ -149,7 +149,7 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
           <div className="mb-8">
             <h2 className="font-bold mb-2">Affiliation</h2>
             <RefinementList
-              attribute="affiliations.title"
+              attribute="affiliations"
               limit={50}
               classNames={refinementClasses}
               sortBy={["name:asc"]}
@@ -159,7 +159,7 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
           <div className="mb-8">
             <h2 className="font-bold mb-2">Type</h2>
             <RefinementList
-              attribute="types.title"
+              attribute="types"
               limit={1000}
               classNames={refinementClasses}
               sortBy={["name:asc"]}
@@ -168,7 +168,7 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = async (
           <div className="mb-8">
             <h2 className="font-bold mb-2">Franchise</h2>
             <RefinementList
-              attribute="franchise.title"
+              attribute="franchise"
               limit={1000}
               classNames={refinementClasses}
               sortBy={["name:asc"]}
