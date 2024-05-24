@@ -41,7 +41,7 @@ dotenv.config();
 export async function POST(request: Request) {
   try {
     // POST THE LATEST POSTS
-    const res = await request.json();
+    const res:SanityDocument = await request.json();
     const client = algoliasearch(
       process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || "",
       process.env.ALGOLIA_ADMIN_KEY || ""
