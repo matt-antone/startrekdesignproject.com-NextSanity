@@ -14,7 +14,7 @@ export async function POST(request: Request) {
       process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || "",
       process.env.ALGOLIA_SEARCH_ADMIN_KEY || ""
     );
-    const index = client.initIndex(res._type);
+    const index = client.initIndex('post');
     const algoliaResponse = await index
       .deleteObject(res._id)
       .then((del: any) => {
