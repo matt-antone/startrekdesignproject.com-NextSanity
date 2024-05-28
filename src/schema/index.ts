@@ -30,6 +30,7 @@ import universe from './universe'
 import affiliation from './affiliation'
 import types from './type'
 import franchise from './franchise'
+import designer from './designer'
 
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -49,6 +50,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     affiliation,
     types,
     franchise,
+    designer,
 
     /* object types */
     blockContent,
