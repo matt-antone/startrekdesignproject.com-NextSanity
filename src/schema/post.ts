@@ -68,6 +68,12 @@ export const PostSchema = {
       to: [{ type: "franchise" }],
     },
     {
+      type: "array",
+      name: "designers",
+      label: "Designers",
+      of: [{ type: "reference", to: [{ type: "designer" }] }],
+    },
+    {
       type: "blockContent",
       name: "references",
       label: "References",
@@ -77,12 +83,6 @@ export const PostSchema = {
       name: "memoryAlpha",
       label: "Memory Alpha",
     },    
-    {
-      type: "array",
-      name: "designers",
-      label: "Designers",
-      of: [{ type: "reference", to: [{ type: "designer" }] }],
-    }
   ],
   preview: {
     select: {

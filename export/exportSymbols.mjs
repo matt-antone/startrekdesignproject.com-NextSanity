@@ -74,6 +74,8 @@ const convertPostToSanityPost = (post) => {
   const affiliations = getTaxonomy(post, "affiliations", taxonomies, "affiliation")
   const franchise = getTaxonomy(post, "franchise", taxonomies, "franchise")
   const types = getTaxonomy(post, "types", taxonomies, "types")
+  const designers = getTaxonomy(post,"designers",taxonomies,"designers")
+  console.log('designers',designers);
 
   timePeriod !== null && (sp.timePeriod = timePeriod)
   quadrant !== null && (sp.quadrant = quadrant)
@@ -81,6 +83,7 @@ const convertPostToSanityPost = (post) => {
   affiliations && affiliations[0] && (sp.affiliations = affiliations)
   franchise && (sp.franchise = franchise)
   types && types[0] && (sp.types = types)
+  designers && designers[0] && (sp.designers = designers)
   post.attributes.featuredImg?.src && (sp.featuredImage = {
     _type: "image",
     _sanityAsset: `image@${post.attributes.featuredImg.src}`,
