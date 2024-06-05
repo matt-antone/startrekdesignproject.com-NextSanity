@@ -17,5 +17,6 @@ export const SITEMAP_QUERY = groq`{
     "affiliations": affiliations[]->title,
     "types": types[]->title,
     "franchise": franchise->title,
+    "designers": designers[]->title,
     references,
 }`;

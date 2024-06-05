@@ -50,10 +50,16 @@ export const getSymbols = async () => {
     "affiliations": affiliations[]->title,
     "types": types[]->title,
     "franchise": franchise->title,
+    "designers": designers[]->title,
     references,
 }`
 
   const symbols = await client.fetch(queryStr);
-  console.log(symbols);
-  return symbols;
+  console.log(symbols)
+  return symbols.map(post=>{
+    if(!post.designers){
+      post.designers = []
+    }
+    return post;
+  });
 };

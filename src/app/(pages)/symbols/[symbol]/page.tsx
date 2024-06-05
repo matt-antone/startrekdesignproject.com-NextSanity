@@ -21,6 +21,7 @@ const query = `*[_type == "post" && slug.current == $slug]{
   "affiliations": affiliations[]->.title,
   "types": types[]->title,
   "franchise": franchise->.title,
+  "designers": designers[]->title,
   "sameUniverse": *[_type == "post" && slug.current != $slug && count(universes[]->.title[@ in ^.^.universes]) > 0]{
     _id,
     title,
@@ -120,6 +121,12 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
                 <span>
                   <PortableText value={post.references} />
                 </span>
+              </li>
+            )}
+                        {post.designers && (
+              <li className="flex justify-between items-center">
+                <span className="font-bold">Designers:</span>{" "}
+                <span>{post.designers?.join(", ")}</span>
               </li>
             )}
           </ul>

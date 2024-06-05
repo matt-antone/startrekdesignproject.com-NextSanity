@@ -174,6 +174,15 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = (
               sortBy={["name:asc"]}
             />
           </div>
+          <div className="mb-8">
+            <h2 className="font-bold mb-2">Designer</h2>
+            <RefinementList
+              attribute="designers"
+              limit={1000}
+              classNames={refinementClasses}
+              sortBy={["name:asc"]}
+            />
+          </div>
         </div>
       </div>
     </InstantSearch>
