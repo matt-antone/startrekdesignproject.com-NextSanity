@@ -80,7 +80,7 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
             {post.affiliations && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Affiliations</span>{" "}
-                <span>{post.affiliations?.map( (a:string) => <Link key={a} className="underline" href={`/symbols?tax=affiliation&term=${a}`}>{a}</Link>)}</span>
+                <span>{post.affiliations?.map( (a:string) => <Link key={a} className="underline" href={`/symbols?tax=affiliations&term=${a}`}>{a}</Link>)}</span>
               </li>
             )}
             {post.quadrant && (

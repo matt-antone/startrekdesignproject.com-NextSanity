@@ -55,13 +55,14 @@ const List: React.FunctionComponent<IList> = () => {
   const searchParams = useSearchParams()
   const tax = searchParams.get('tax')
   const term = searchParams.get('term')
-  console.log(tax,term)
+  const filter = tax ? `${tax}:'${term}'` : ""
+  console.log(tax,term,filter)
 
   return (
     <InstantSearch searchClient={client} indexName="post">
       <Configure
         analytics={false}
-        filters={tax ? `${tax}:${term}` : ""}
+        filters={filter}
         hitsPerPage={48}
       />
       <div className="lg:grid grid-cols-10 gap-12">
