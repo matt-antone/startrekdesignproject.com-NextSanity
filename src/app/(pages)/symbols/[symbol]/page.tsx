@@ -80,7 +80,7 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
             {post.affiliations && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Affiliations</span>{" "}
-                <span>{post.affiliations?.map( (a:string) => <Link className="underline" href={`/symbols?tax=affiliation&term=${a}`}>{a}</Link>)}</span>
+                <span>{post.affiliations?.map( (a:string) => <Link key={a} className="underline" href={`/symbols?tax=affiliation&term=${a}`}>{a}</Link>)}</span>
               </li>
             )}
             {post.quadrant && (
@@ -100,7 +100,7 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
             {post.universes && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Universe:</span>{" "}
-                <span>{post.universes?.map( (u:string) => <Link className="underline" href={`/symbols?tax=universes&term=${u}`}>{u}</Link>)}</span>
+                <span>{post.universes?.map( (u:string) => <Link key={u} className="underline" href={`/symbols?tax=universes&term=${u}`}>{u}</Link>)}</span>
               </li>
             )}
             {post.franchise && (
@@ -115,7 +115,7 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
                 <span>{post.types?.map( (t:string,i:number) => {
                   return (
                     <>
-                      <Link className="underline" href={`/symbols?tax=types&term=${t}`}>{t}</Link>{ i+1 < post.types.length && ", "}
+                      <Link key={t} className="underline" href={`/symbols?tax=types&term=${t}`}>{t}</Link>{ i+1 < post.types.length && ", "}
                     </>
                   )
                 })}</span>

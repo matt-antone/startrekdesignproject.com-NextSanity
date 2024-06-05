@@ -17,12 +17,10 @@ import { useSearchParams } from 'next/navigation'
 
 
 interface ISymbolsProps {}
+interface IList {}
 
-export const SymbolList: React.FunctionComponent<ISymbolsProps> = (
-  props
-) => {
+const List: React.FunctionComponent<IList> = () => {
   const client = useAlgolia();
-  const searchParams = useSearchParams()
   const paginationClasses = {
     root: "mb-12",          //The root element of the widget.
     noRefinementRoot: "",   //The root element when there are no refinements.
@@ -54,6 +52,7 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = (
     showMore: "", //The “Show more” button.
     disabledShowMore: "", //The disabled “Show more” button.
   };
+  const searchParams = useSearchParams()
   const tax = searchParams.get('tax')
   const term = searchParams.get('term')
   console.log(tax,term)
@@ -196,5 +195,18 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = (
       </div>
     </InstantSearch>
   );
+}
+
+export const SymbolList: React.FunctionComponent<ISymbolsProps> = (
+  props
+) => {
+  return (
+    <React.Suspense fallback={<div>Loading...</div>}>
+      <List/>
+    </React.Suspense>
+  )
 };
+
+
+
 export default SymbolList;
