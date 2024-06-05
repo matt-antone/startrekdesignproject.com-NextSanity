@@ -80,39 +80,45 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
             {post.affiliations && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Affiliations</span>{" "}
-                <span>{post.affiliations?.join(", ")}</span>
+                <span>{post.affiliations?.map( (a:string) => <Link className="underline" href={`/symbols?tax=affiliation&term=${a}`}>{a}</Link>)}</span>
               </li>
             )}
             {post.quadrant && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Quadrant:</span>{" "}
-                <span>{post.quadrant}</span>
+                <Link className="underline" href={`/symbols?tax=quadrant&term=${post.quadrant}`}>{post.quadrant}</Link>
               </li>
             )}
 
             {post.timePeriod && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Time Period:</span>{" "}
-                <span>{post.timePeriod}</span>
+                <Link className="underline" href={`/symbols?tax=timePeriod&term=${post.timePeriod}`}>{post.timePeriod}</Link>
               </li>
             )}
 
             {post.universes && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Universe:</span>{" "}
-                <span>{post.universes?.join(", ")}</span>
+                <span>{post.universes?.map( (u:string) => <Link className="underline" href={`/symbols?tax=universes&term=${u}`}>{u}</Link>)}</span>
               </li>
             )}
             {post.franchise && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Franchise:</span>{" "}
-                <span>{post.franchise}</span>
+                <Link className="underline" href={`/symbols?tax=franchise&term=${post.franchise}`}>{post.franchise}</Link>
               </li>
             )}
             {post.types && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Types:</span>{" "}
-                <span>{post.types?.join(", ")}</span>
+                <span>{post.types?.map( (t:string,i:number) => {
+                  return (
+                    <>
+                      <Link className="underline" href={`/symbols?tax=types&term=${t}`}>{t}</Link>{ i+1 < post.types.length && ", "}
+                    </>
+                  )
+                })}</span>
               </li>
             )}
             {post.references && (

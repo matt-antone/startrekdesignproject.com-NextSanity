@@ -13,6 +13,8 @@ import {
   CurrentRefinements,
 } from "react-instantsearch";
 import SymbolCard from "./SymbolCard";
+import { useSearchParams } from 'next/navigation'
+
 
 interface ISymbolsProps {}
 
@@ -20,19 +22,20 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = (
   props
 ) => {
   const client = useAlgolia();
+  const searchParams = useSearchParams()
   const paginationClasses = {
-    root: "mb-12", //The root element of the widget.
-    noRefinementRoot: "", //The root element when there are no refinements.
-    list: "flex gap-4", //The list element.
-    item: "", //Each item element.
-    firstPageItem: "", //The first page element.
-    previousPageItem: "", //The previous page element.
-    pageItem: "", //Each page element.
+    root: "mb-12",          //The root element of the widget.
+    noRefinementRoot: "",   //The root element when there are no refinements.
+    list: "flex gap-4",     //The list element.
+    item: "",               //Each item element.
+    firstPageItem: "",      //The first page element.
+    previousPageItem: "",   //The previous page element.
+    pageItem: "",           //Each page element.
     selectedItem: "font-bold", //The selected page element.
-    disabledItem: "", //Each disabled page element.
-    nextPageItem: "", //The next page element.
-    lastPageItem: "", //The last page element.
-    link: "", //The link of each items
+    disabledItem: "",       //Each disabled page element.
+    nextPageItem: "",       //The next page element.
+    lastPageItem: "",       //The last page element.
+    link: "",               //The link of each items
   };
 
   const refinementClasses = {
@@ -51,12 +54,15 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = (
     showMore: "", //The “Show more” button.
     disabledShowMore: "", //The disabled “Show more” button.
   };
+  const tax = searchParams.get('tax')
+  const term = searchParams.get('term')
+  console.log(tax,term)
 
   return (
     <InstantSearch searchClient={client} indexName="post">
       <Configure
         analytics={false}
-        //filters="free_shipping:true"
+        filters={tax ? `${tax}:${term}` : ""}
         hitsPerPage={48}
       />
       <div className="lg:grid grid-cols-10 gap-12">
@@ -94,6 +100,9 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = (
               />
             </div>
             <div className="flex gap-4">
+              {term  && (
+                <p>{term}</p>
+              ) }
               <CurrentRefinements
                 classNames={{
                   root: 'MyCustomCurrentRefinements',
