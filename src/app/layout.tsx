@@ -1,12 +1,14 @@
 import { Inter, Barlow } from "next/font/google";
-import SpaceTravel from "./SpaceTravel";
+import SpaceTravel from "@/src/app/(pages)//SpaceTravel";
 import "./globals.css";
-import Header from "../components/Header";
-import Container from "../components/Container";
+import Header from "@/src/app/components/Header";
+import Container from "@/src/app/components/Container";
 import type { Viewport } from 'next'
-import Footer from "../components/Footer";
+import Footer from "@/src/app/components/Footer";
 import { client } from "@/sanity/lib/client";
 import type { Metadata, ResolvingMetadata } from 'next'
+import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 
  
@@ -64,6 +66,7 @@ export default async function RootLayout({
           <Container>{children}</Container>
         </div>
         <Footer />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID || ""} />
       </body>
     </html>
   );

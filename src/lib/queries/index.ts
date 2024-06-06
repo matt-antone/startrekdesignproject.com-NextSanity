@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 export const SITEMAP_QUERY = groq`{
-  "test": *[_type == "post"]|order(date desc){
+  "posts": *[_type == "post"]|order(date desc){
     "objectID": _id,
     image{...,asset->{
       url,
@@ -19,4 +19,5 @@ export const SITEMAP_QUERY = groq`{
     "franchise": franchise->title,
     "designers": designers[]->title,
     references,
+  }
 }`;
