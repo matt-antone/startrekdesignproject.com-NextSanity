@@ -16,8 +16,8 @@ import SymbolCard from "./SymbolCard";
 import { useSearchParams } from 'next/navigation'
 
 
-interface ISymbolsProps {}
-interface IList {}
+interface ISymbolsProps { }
+interface IList { }
 
 const List: React.FunctionComponent<IList> = () => {
   const client = useAlgolia();
@@ -49,21 +49,20 @@ const List: React.FunctionComponent<IList> = () => {
     labelText: "", //The text element of each label.
     count:
       "hidden lg:inline-flex text-xs justify-center items-center p-0 px-1 rounded bg-white text-black opacity-60", //The count of each item.
-    showMore: "", //The “Show more” button.
-    disabledShowMore: "", //The disabled “Show more” button.
+    showMore: "", //The "Show more" button.
+    disabledShowMore: "", //The disabled "Show more" button.
   };
   const searchParams = useSearchParams()
   const tax = searchParams.get('tax')
   const term = searchParams.get('term')
   const filter = tax ? `${tax}:'${term}'` : ""
-  console.log(tax,term,filter)
+  console.log(tax, term, filter)
 
   return (
     <InstantSearch searchClient={client} indexName="post">
       <Configure
-        analytics={false}
-        filters={filter}
         hitsPerPage={48}
+        {...(filter ? { filters: filter } : {})}
       />
       <div className="lg:grid grid-cols-10 gap-12">
         <div className="col-span-8">
@@ -92,6 +91,8 @@ const List: React.FunctionComponent<IList> = () => {
                   { label: "Date (asc)", value: "post_date_asc" },
                   { label: "Title (asc)", value: "post_title_asc" },
                   { label: "Title (desc)", value: "post_title_desc" },
+                  { label: "Time Period (asc)", value: "post_timePeriod_asc" },
+                  { label: "Time Period (desc)", value: "post_timePeriod_desc" },
                 ]}
                 classNames={{
                   root: 'MyCustomSortBy',
@@ -100,9 +101,9 @@ const List: React.FunctionComponent<IList> = () => {
               />
             </div>
             <div className="flex gap-4">
-              {term  && (
+              {term && (
                 <p>{term}</p>
-              ) }
+              )}
               <CurrentRefinements
                 classNames={{
                   root: 'MyCustomCurrentRefinements',
@@ -203,7 +204,7 @@ export const SymbolList: React.FunctionComponent<ISymbolsProps> = (
 ) => {
   return (
     <React.Suspense fallback={<div>Loading...</div>}>
-      <List/>
+      <List />
     </React.Suspense>
   )
 };
