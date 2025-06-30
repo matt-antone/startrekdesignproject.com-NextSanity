@@ -134,34 +134,67 @@ async function exportDataset(timestamp: string): Promise<Buffer> {
 
     // Download actual media files and prepare for CLI import
     console.log('Downloading media files...')
-    const assetFiles = await Promise.all(
-      assets.map(async (asset: any) => {
-        try {
-          const url = asset.url
-          const response = await fetch(url)
-          const buffer = await response.arrayBuffer()
 
-          // Determine folder and filename based on asset type
-          const isImage = asset._type === 'sanity.imageAsset'
-          const folder = isImage ? 'images' : 'files'
+    // Helper function to download assets with concurrency limit
+    async function downloadAssetsWithConcurrencyLimit(assets: any[], concurrencyLimit: number = 5) {
+      const results: Array<{ name: string; content: Buffer } | null> = []
 
-          // Use the exact filename format from CLI export: assetId-originalFilename
-          const originalFilename = asset.originalFilename || 'unknown'
-          const fileName = `${asset._id}-${originalFilename}`
+      for (let i = 0; i < assets.length; i += concurrencyLimit) {
+        const batch = assets.slice(i, i + concurrencyLimit)
+        console.log(`Downloading batch ${Math.floor(i / concurrencyLimit) + 1}/${Math.ceil(assets.length / concurrencyLimit)} (${batch.length} assets)`)
 
-          return {
-            name: `${folder}/${fileName}`,
-            content: Buffer.from(buffer)
-          }
-        } catch (error) {
-          console.warn(`Failed to download asset ${asset._id}:`, error)
-          return null
+        const batchResults = await Promise.all(
+          batch.map(async (asset: any) => {
+            try {
+              const url = asset.url
+              const response = await fetch(url, {
+                // Add timeout and other fetch options to prevent hanging
+                signal: AbortSignal.timeout(30000), // 30 second timeout
+              })
+
+              if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+              }
+
+              const buffer = await response.arrayBuffer()
+
+              // Determine folder and filename based on asset type
+              const isImage = asset._type === 'sanity.imageAsset'
+              const folder = isImage ? 'images' : 'files'
+
+              // Use the exact filename format from CLI export: assetId-originalFilename
+              const originalFilename = asset.originalFilename || 'unknown'
+              const fileName = `${asset._id}-${originalFilename}`
+
+              return {
+                name: `${folder}/${fileName}`,
+                content: Buffer.from(buffer)
+              }
+            } catch (error) {
+              console.warn(`Failed to download asset ${asset._id}:`, error)
+              return null
+            }
+          })
+        )
+
+        results.push(...batchResults)
+
+        // Add a small delay between batches to prevent overwhelming the system
+        if (i + concurrencyLimit < assets.length) {
+          await new Promise(resolve => setTimeout(resolve, 100))
         }
-      })
-    )
+      }
+
+      return results
+    }
+
+    const assetFiles = await downloadAssetsWithConcurrencyLimit(assets, 3) // Limit to 3 concurrent downloads
 
     // Filter out failed downloads
     const successfulAssetFiles = assetFiles.filter(file => file !== null)
+    const failedDownloads = assetFiles.length - successfulAssetFiles.length
+
+    console.log(`Download completed: ${successfulAssetFiles.length} successful, ${failedDownloads} failed`)
 
     // Create NDJSON content with all cleaned documents (excluding assets)
     // Sanity CLI expects only content documents in the NDJSON file
