@@ -191,7 +191,7 @@ async function exportDataset(timestamp: string): Promise<Buffer> {
     const assetFiles = await downloadAssetsWithConcurrencyLimit(assets, 3) // Limit to 3 concurrent downloads
 
     // Filter out failed downloads
-    const successfulAssetFiles = assetFiles.filter(file => file !== null)
+    const successfulAssetFiles = assetFiles.filter((file): file is { name: string; content: Buffer } => file !== null)
     const failedDownloads = assetFiles.length - successfulAssetFiles.length
 
     console.log(`Download completed: ${successfulAssetFiles.length} successful, ${failedDownloads} failed`)
