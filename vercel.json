@@ -1,0 +1,9 @@
+{
+  "framework": "nextjs",
+  "crons": [
+    {
+      "path": "/api/backup?secret=84d60925-17cd-481c-89f2-3e938d03ee11",
+      "schedule": "0 3 * * *"
+    }
+  ]
+}
