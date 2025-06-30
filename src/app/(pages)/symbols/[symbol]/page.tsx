@@ -4,6 +4,7 @@ import PageHeader from "../../../components/PageHeader";
 import PortableText from "@/src/app/components/PortableText";
 import Link from "next/link";
 import type { Metadata, ResolvingMetadata } from "next";
+import { notFound } from "next/navigation";
 
 const query = `*[_type == "post" && slug.current == $slug]{
   ...,
@@ -47,7 +48,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   // read route params
   const post = await client.fetch(query, { slug: params.symbol });
-  return {
+  return post && {
     title: post.title,
   };
 }
@@ -62,6 +63,11 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
   params: { symbol: slug },
 }) => {
   const post = await client.fetch(query, { slug });
+
+  if (!post) {
+    return notFound();
+  }
+
   return (
     <>
       <div className="lg:flex gap-12 w-full items-center">
@@ -80,7 +86,7 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
             {post.affiliations && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Affiliations</span>{" "}
-                <span>{post.affiliations?.map( (a:string) => <Link key={a} className="underline" href={`/symbols?tax=affiliations&term=${a}`}>{a}</Link>)}</span>
+                <span>{post.affiliations?.map((a: string) => <Link key={a} className="underline" href={`/symbols?tax=affiliations&term=${a}`}>{a}</Link>)}</span>
               </li>
             )}
             {post.quadrant && (
@@ -100,7 +106,7 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
             {post.universes && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Universe:</span>{" "}
-                <span>{post.universes?.map( (u:string) => <Link key={u} className="underline" href={`/symbols?tax=universes&term=${u}`}>{u}</Link>)}</span>
+                <span>{post.universes?.map((u: string) => <Link key={u} className="underline" href={`/symbols?tax=universes&term=${u}`}>{u}</Link>)}</span>
               </li>
             )}
             {post.franchise && (
@@ -112,10 +118,10 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
             {post.types && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Types:</span>{" "}
-                <span>{post.types?.map( (t:string,i:number) => {
+                <span>{post.types?.map((t: string, i: number) => {
                   return (
                     <>
-                      <Link key={t} className="underline" href={`/symbols?tax=types&term=${t}`}>{t}</Link>{ i+1 < post.types.length && ", "}
+                      <Link key={t} className="underline" href={`/symbols?tax=types&term=${t}`}>{t}</Link>{i + 1 < post.types.length && ", "}
                     </>
                   )
                 })}</span>
@@ -129,7 +135,7 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
                 </span>
               </li>
             )}
-                        {post.designers && (
+            {post.designers && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Designers:</span>{" "}
                 <span>{post.designers?.join(", ")}</span>
