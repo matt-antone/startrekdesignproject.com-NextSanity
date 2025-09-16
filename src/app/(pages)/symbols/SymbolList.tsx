@@ -73,7 +73,7 @@ const List: React.FunctionComponent<IList> = () => {
               root: "pb-4", //The root element of the widget.
               form: "", //The form element.
               input:
-                "bg-transparent rounded-3xl border border-white/80 w-full text-white px-3 py-1.5", //The input element.
+                "bg-black/70 rounded-3xl border border-white/80 w-full text-white px-3 py-1.5", //The input element.
               submit: "", //The submit button.
               reset: "", //The reset button.
               loadingIndicator: "", //The loading indicator element.
