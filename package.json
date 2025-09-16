@@ -19,6 +19,8 @@
     "export:tax": "sanity dataset export production production.tar.gz --types affiliation,franchise,quadrant,timePeriod,universe,types --no-assets"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.8",
+    "@heroicons/react": "^2.2.0",
     "@next/third-parties": "^14.2.3",
     "@portabletext/react": "^3.0.17",
     "@sanity/client": "^6.12.4",

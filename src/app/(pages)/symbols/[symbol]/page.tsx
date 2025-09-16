@@ -71,7 +71,7 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
   return (
     <>
       <div className="lg:flex gap-12 w-full items-center">
-        <div className="basis-1/2">
+        <div className="basis-2/3">
           <img
             src={post?.featuredImage?.src || ""}
             alt={post?.featuredImage?.alt || ""}
@@ -80,48 +80,48 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
             height={post.featuredImage.height / 2}
           />
         </div>
-        <div className="basis-1/2">
+        <div className="basis-1/3">
           <PageHeader title={post.title} />
           <ul className="grid gap-4 text-lg mb-8">
             {post.affiliations && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Affiliations</span>{" "}
-                <span>{post.affiliations?.map((a: string) => <Link key={a} className="underline" href={`/symbols?tax=affiliations&term=${a}`}>{a}</Link>)}</span>
+                <span>{post.affiliations?.map((a: string) => <Link key={a} className="bg-pink-700 text-white inline-flex items-center py-1 px-2 rounded-full text-sm" href={`/symbols?tax=affiliations&term=${a}`}>{a}</Link>)}</span>
               </li>
             )}
             {post.quadrant && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Quadrant:</span>{" "}
-                <Link className="underline" href={`/symbols?tax=quadrant&term=${post.quadrant}`}>{post.quadrant}</Link>
+                <Link className="bg-pink-700 text-white inline-flex items-center py-1 px-2 rounded-full text-sm" href={`/symbols?tax=quadrant&term=${post.quadrant}`}>{post.quadrant}</Link>
               </li>
             )}
 
             {post.timePeriod && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Time Period:</span>{" "}
-                <Link className="underline" href={`/symbols?tax=timePeriod&term=${post.timePeriod}`}>{post.timePeriod}</Link>
+                <Link className="bg-pink-700 text-white inline-flex items-center py-1 px-2 rounded-full text-sm" href={`/symbols?tax=timePeriod&term=${post.timePeriod}`}>{post.timePeriod}</Link>
               </li>
             )}
 
             {post.universes && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Universe:</span>{" "}
-                <span>{post.universes?.map((u: string) => <Link key={u} className="underline" href={`/symbols?tax=universes&term=${u}`}>{u}</Link>)}</span>
+                <span>{post.universes?.map((u: string) => <Link key={u} className="bg-pink-700 text-white inline-flex items-center py-1 px-2 rounded-full text-sm" href={`/symbols?tax=universes&term=${u}`}>{u}</Link>)}</span>
               </li>
             )}
             {post.franchise && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Franchise:</span>{" "}
-                <Link className="underline" href={`/symbols?tax=franchise&term=${post.franchise}`}>{post.franchise}</Link>
+                <Link className="bg-pink-700 text-white inline-flex items-center py-1 px-2 rounded-full text-sm" href={`/symbols?tax=franchise&term=${post.franchise}`}>{post.franchise}</Link>
               </li>
             )}
             {post.types && (
               <li className="flex justify-between items-center">
                 <span className="font-bold">Types:</span>{" "}
-                <span>{post.types?.map((t: string, i: number) => {
+                <span className="flex gap-2">{post.types?.map((t: string, i: number) => {
                   return (
                     <>
-                      <Link key={t} className="underline" href={`/symbols?tax=types&term=${t}`}>{t}</Link>{i + 1 < post.types.length && ", "}
+                      <Link key={t} className="bg-pink-700 text-white inline-flex items-center py-1 px-2 rounded-full text-sm" href={`/symbols?tax=types&term=${t}`}>{t}</Link>
                     </>
                   )
                 })}</span>
@@ -148,13 +148,13 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
 
         </div>
       </div>
-      <div className="md:grid grid-cols-2 gap-12 w-full items-start py-12">
-        <div>
+      <div className="lg:flex gap-12 w-full items-start">
+        <div className="basis-2/3">
           <PortableText value={post.body} />
         </div>
-        <div>
+        <div className="basis-1/3">
           <h2 className="text-xl font-bold">Related</h2>
-          <ul className="grid grid-cols-3 gap-4 py-8">
+          <ul className="grid grid-cols-2 gap-4 py-8">
             {post.sameUniverse.map((related: any) => (
               <li key={related._id} className="text-center">
                 <Link href={`/symbols/${related.slug.current}`}>
@@ -169,6 +169,7 @@ const SymbolPage: React.FunctionComponent<ISymbolPageProps> = async ({
               </li>
             ))}
           </ul>
+
         </div>
       </div>
     </>

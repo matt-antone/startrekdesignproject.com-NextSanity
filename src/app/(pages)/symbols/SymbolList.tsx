@@ -9,11 +9,11 @@ import {
   Pagination,
   SearchBox,
   Stats,
-  SortBy,
   CurrentRefinements,
 } from "react-instantsearch";
 import SymbolCard from "./SymbolCard";
 import { useSearchParams } from 'next/navigation'
+import { SortBy } from './SortBy';
 
 
 interface ISymbolsProps { }
@@ -22,7 +22,7 @@ interface IList { }
 const List: React.FunctionComponent<IList> = () => {
   const client = useAlgolia();
   const paginationClasses = {
-    root: "mb-12",          //The root element of the widget.
+    root: "mb-0 flex-1",          //The root element of the widget.
     noRefinementRoot: "",   //The root element when there are no refinements.
     list: "flex gap-4",     //The list element.
     item: "",               //Each item element.
@@ -61,7 +61,7 @@ const List: React.FunctionComponent<IList> = () => {
   return (
     <InstantSearch searchClient={client} indexName="post">
       <Configure
-        hitsPerPage={48}
+        // hitsPerPage={48}
         {...(filter ? { filters: filter } : {})}
       />
       <div className="lg:grid grid-cols-10 gap-12">
@@ -82,25 +82,19 @@ const List: React.FunctionComponent<IList> = () => {
               loadingIcon: "", //The loading icon.
             }}
           />
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center mb-12">
             <Pagination classNames={paginationClasses} />
-            <div className="text-black">
-              <SortBy
-                items={[
-                  { label: "Date (desc)", value: "post_date_desc" },
-                  { label: "Date (asc)", value: "post_date_asc" },
-                  { label: "Title (asc)", value: "post_title_asc" },
-                  { label: "Title (desc)", value: "post_title_desc" },
-                  { label: "Time Period (asc)", value: "post_timePeriod_asc" },
-                  { label: "Time Period (desc)", value: "post_timePeriod_desc" },
-                ]}
-                classNames={{
-                  root: 'MyCustomSortBy',
-                  select: 'MyCustomSortBySelect MyCustomSortBySelect--subclass',
-                }}
-              />
-            </div>
-            <div className="flex gap-4">
+            <SortBy
+              items={[
+                { label: "Date (desc)", value: "post_date_desc" },
+                { label: "Date (asc)", value: "post_date_asc" },
+                { label: "Title (asc)", value: "post_title_asc" },
+                { label: "Title (desc)", value: "post_title_desc" },
+                { label: "Time Period (asc)", value: "post_timePeriod_asc" },
+                { label: "Time Period (desc)", value: "post_timePeriod_desc" },
+              ]}
+            />
+            <div className="flex justify-end gap-4 flex-1">
               {term && (
                 <p>{term}</p>
               )}
@@ -125,77 +119,66 @@ const List: React.FunctionComponent<IList> = () => {
         {/* Sidebar */}
         <div className="py-12 lg:py-0 col-span-2 grid grid-cols-3 gap-2 lg:block">
           <div className="mb-8">
-            <h2 className="font-bold mb-2">Time Period</h2>
-            <RefinementList
-              attribute="timePeriod"
-              limit={15}
-              showMoreLimit={16}
-              classNames={refinementClasses}
-              sortBy={["name:asc"]}
-            />
+            <details className="bg-pink-700 p-1 rounded-3xl">
+              <summary className="text-white px-2 py-1">Time Period</summary>
+              <div className="px-2">
+                <RefinementList
+                  attribute="timePeriod"
+                  limit={15}
+                  showMoreLimit={16}
+                  classNames={refinementClasses}
+                  sortBy={["name:asc"]}
+                />
+              </div>
+            </details>
           </div>
 
           <div className="mb-8">
-            <h2 className="font-bold mb-2">Quadrant</h2>
-            <RefinementList
-              attribute="quadrant"
-              limit={15}
-              showMoreLimit={16}
-              classNames={refinementClasses}
-              sortBy={["name:asc"]}
-            />
+            <details className="bg-pink-700 p-1 rounded-3xl">
+              <summary className="text-white px-2 py-1">Quadrant</summary>
+              <div className="px-2">
+                <RefinementList
+                  attribute="quadrant"
+                  limit={15}
+                  showMoreLimit={16}
+                  classNames={refinementClasses}
+                  sortBy={["name:asc"]}
+                />
+              </div>
+            </details>
           </div>
 
           <div className="mb-8">
-            <h2 className="font-bold mb-2">Universe</h2>
-            <RefinementList
-              attribute="universes"
-              limit={15}
-              classNames={refinementClasses}
-              sortBy={["name:asc"]}
-            />
+            <details className="bg-pink-700 p-1 rounded-3xl">
+              <summary className="text-white px-2 py-1">Universe</summary>
+              <div className="px-2">
+                <RefinementList
+                  attribute="universes"
+                  limit={15}
+                  showMoreLimit={16}
+                  classNames={refinementClasses}
+                  sortBy={["name:asc"]}
+                />
+              </div>
+            </details>
           </div>
 
           <div className="mb-8">
-            <h2 className="font-bold mb-2">Affiliation</h2>
-            <RefinementList
-              attribute="affiliations"
-              limit={50}
-              classNames={refinementClasses}
-              sortBy={["name:asc"]}
-            />
-          </div>
-
-          <div className="mb-8">
-            <h2 className="font-bold mb-2">Type</h2>
-            <RefinementList
-              attribute="types"
-              limit={1000}
-              classNames={refinementClasses}
-              sortBy={["name:asc"]}
-            />
-          </div>
-          <div className="mb-8">
-            <h2 className="font-bold mb-2">Franchise</h2>
-            <RefinementList
-              attribute="franchise"
-              limit={1000}
-              classNames={refinementClasses}
-              sortBy={["name:asc"]}
-            />
-          </div>
-          <div className="mb-8">
-            <h2 className="font-bold mb-2">Designer</h2>
-            <RefinementList
-              attribute="designers"
-              limit={1000}
-              classNames={refinementClasses}
-              sortBy={["name:asc"]}
-            />
+            <details className="bg-pink-700 p-1 rounded-3xl">
+              <summary className="text-white px-2 py-1">Affiliation</summary>
+              <div className="px-2">
+                <RefinementList
+                  attribute="affiliations"
+                  limit={50}
+                  classNames={refinementClasses}
+                  sortBy={["name:asc"]}
+                />
+              </div>
+            </details>
           </div>
         </div>
       </div>
-    </InstantSearch>
+    </InstantSearch >
   );
 }
 
