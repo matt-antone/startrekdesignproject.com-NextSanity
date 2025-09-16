@@ -68,12 +68,12 @@ const List: React.FunctionComponent<IList> = () => {
         <div className="col-span-8">
           {/* Main */}
           <SearchBox
-            placeholder="search"
+            placeholder="Search"
             classNames={{
               root: "pb-4", //The root element of the widget.
               form: "", //The form element.
               input:
-                "bg-transparent border border-white w-full text-white px-2", //The input element.
+                "bg-transparent rounded-3xl border border-white/80 w-full text-white px-3 py-1.5", //The input element.
               submit: "", //The submit button.
               reset: "", //The reset button.
               loadingIndicator: "", //The loading indicator element.
