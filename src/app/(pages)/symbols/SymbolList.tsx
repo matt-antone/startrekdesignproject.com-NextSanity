@@ -82,7 +82,7 @@ const List: React.FunctionComponent<IList> = () => {
               loadingIcon: "", //The loading icon.
             }}
           />
-          <div className="flex justify-between items-center mb-12">
+          <div className="flex flex-col lg:flex-row gap-4 justify-between lg:items-center mb-12">
             <Pagination classNames={paginationClasses} />
             <SortBy
               items={[
