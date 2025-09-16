@@ -14,6 +14,7 @@ import {
 import SymbolCard from "./SymbolCard";
 import { useSearchParams } from 'next/navigation'
 import { SortBy } from './SortBy';
+import Details from "@/src/app/components/Details";
 
 
 interface ISymbolsProps { }
@@ -86,8 +87,8 @@ const List: React.FunctionComponent<IList> = () => {
             <Pagination classNames={paginationClasses} />
             <SortBy
               items={[
-                { label: "Date (desc)", value: "post_date_desc" },
-                { label: "Date (asc)", value: "post_date_asc" },
+                { label: "Date Added (desc)", value: "post_date_desc" },
+                { label: "Date Added (asc)", value: "post_date_asc" },
                 { label: "Title (asc)", value: "post_title_asc" },
                 { label: "Title (desc)", value: "post_title_desc" },
                 { label: "Time Period (asc)", value: "post_timePeriod_asc" },
@@ -119,62 +120,79 @@ const List: React.FunctionComponent<IList> = () => {
         {/* Sidebar */}
         <div className="py-12 lg:py-0 col-span-2 grid grid-cols-3 gap-2 lg:block">
           <div className="mb-8">
-            <details className="bg-pink-700 p-1 rounded-3xl">
-              <summary className="text-white px-2 py-1">Time Period</summary>
-              <div className="px-2">
-                <RefinementList
-                  attribute="timePeriod"
-                  limit={15}
-                  showMoreLimit={16}
-                  classNames={refinementClasses}
-                  sortBy={["name:asc"]}
-                />
-              </div>
-            </details>
+            <Details title="Time Period">
+              <RefinementList
+                attribute="timePeriod"
+                limit={15}
+                showMoreLimit={16}
+                classNames={refinementClasses}
+                sortBy={["name:asc"]}
+              />
+            </Details>
           </div>
 
           <div className="mb-8">
-            <details className="bg-pink-700 p-1 rounded-3xl">
-              <summary className="text-white px-2 py-1">Quadrant</summary>
-              <div className="px-2">
-                <RefinementList
-                  attribute="quadrant"
-                  limit={15}
-                  showMoreLimit={16}
-                  classNames={refinementClasses}
-                  sortBy={["name:asc"]}
-                />
-              </div>
-            </details>
+            <Details title="Quadrant">
+              <RefinementList
+                attribute="quadrant"
+                limit={15}
+                showMoreLimit={16}
+                classNames={refinementClasses}
+                sortBy={["name:asc"]}
+              />
+            </Details>
           </div>
 
           <div className="mb-8">
-            <details className="bg-pink-700 p-1 rounded-3xl">
-              <summary className="text-white px-2 py-1">Universe</summary>
-              <div className="px-2">
-                <RefinementList
-                  attribute="universes"
-                  limit={15}
-                  showMoreLimit={16}
-                  classNames={refinementClasses}
-                  sortBy={["name:asc"]}
-                />
-              </div>
-            </details>
+            <Details title="Universe">
+              <RefinementList
+                attribute="universes"
+                limit={15}
+                showMoreLimit={16}
+                classNames={refinementClasses}
+                sortBy={["name:asc"]}
+              />
+            </Details>
           </div>
-
           <div className="mb-8">
-            <details className="bg-pink-700 p-1 rounded-3xl">
-              <summary className="text-white px-2 py-1">Affiliation</summary>
-              <div className="px-2">
-                <RefinementList
-                  attribute="affiliations"
-                  limit={50}
-                  classNames={refinementClasses}
-                  sortBy={["name:asc"]}
-                />
-              </div>
-            </details>
+            <Details title="Affiliation">
+              <RefinementList
+                attribute="affiliations"
+                limit={50}
+                classNames={refinementClasses}
+                sortBy={["name:asc"]}
+              />
+            </Details>
+          </div>
+          <div className="mb-8">
+            <Details title="Type">
+              <RefinementList
+                attribute="types"
+                limit={50}
+                classNames={refinementClasses}
+                sortBy={["name:asc"]}
+              />
+            </Details>
+          </div>
+          <div className="mb-8">
+            <Details title="Franchise">
+              <RefinementList
+                attribute="franchise"
+                limit={50}
+                classNames={refinementClasses}
+                sortBy={["name:asc"]}
+              />
+            </Details>
+          </div>
+          <div className="mb-8">
+            <Details title="Designer">
+              <RefinementList
+                attribute="designers"
+                limit={50}
+                classNames={refinementClasses}
+                sortBy={["name:asc"]}
+              />
+            </Details>
           </div>
         </div>
       </div>
