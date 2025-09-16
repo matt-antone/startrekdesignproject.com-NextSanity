@@ -55,7 +55,7 @@ export function SortBy(props: UseSortByProps) {
     <div className="relative flex-1">
       <Listbox value={selectedOption} onChange={(opt: { label: string; value: string }) => refine(opt.value)}>
         {/* <Label className="block text-sm/6 font-medium text-gray-900 dark:text-white">Assigned to</Label> */}
-        <div className="relative mt-2 w-full">
+        <div className="relative w-full">
           <ListboxButton className={clsx(
             'relative block w-full rounded-3xl border border-white/80 bg-black/70 py-1.5 pr-8 pl-3 text-left text-sm/6 text-white',
             'outline-2 outline-white data-focus:outline-2 data-focus:-outline-offset-2 data-focus:outline-white data-focus:border-red-500'
