@@ -60,7 +60,7 @@ const List: React.FunctionComponent<IList> = () => {
   console.log(tax, term, filter)
 
   return (
-    <InstantSearch searchClient={client} indexName="post_post_date_desc">
+    <InstantSearch searchClient={client} indexName="post_date_desc">
       <Configure
         // hitsPerPage={48}
         {...(filter ? { filters: filter } : {})}
